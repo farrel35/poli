@@ -13,6 +13,11 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+		$role = $this->session->userdata('role');
+
+		if ($role != 'admin') {
+			redirect('auth/login_dokter');
+		}
 		$data = array(
 			'title' => 'Dashboard',
 			'isi' => 'admin/v_dashboard_admin'
