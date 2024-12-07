@@ -26,6 +26,7 @@ class M_admin extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->delete('tbl_poli', $data);
     }
+
     public function get_dokter()
     {
         $this->db->select('tbl_dokter.id, tbl_dokter.nama, tbl_dokter.alamat, tbl_dokter.no_hp, tbl_dokter.id_poli, tbl_poli.nama_poli');
@@ -72,5 +73,28 @@ class M_admin extends CI_Model
     {
         $this->db->where('id', $data['id']);
         $this->db->delete('tbl_obat', $data);
+    }
+
+    public function get_pasien()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_pasien');
+        return $this->db->get()->result();
+    }
+
+    public function insert_pasien($data)
+    {
+        $this->db->insert('tbl_pasien', $data);
+    }
+
+    public function edit_pasien($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('tbl_pasien', $data);
+    }
+    public function delete_pasien($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->delete('tbl_pasien', $data);
     }
 }

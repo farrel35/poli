@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>admin/manage_users" class="nav-link">
+                    <a href="<?= base_url() ?>admin/pasien" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Pasien</p>
                     </a>

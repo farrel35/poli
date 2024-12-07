@@ -8,6 +8,7 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_admin');
+		$this->load->model('M_pasien');
 	}
 
 	public function index()
@@ -29,6 +30,18 @@ class Admin extends CI_Controller
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
+
+	public function pasien()
+	{
+		$data = array(
+			'title' => 'Pasien',
+			'pasien' => $this->M_admin->get_pasien(),
+			'no_rm' => $this->M_pasien->generate_no_rm(),
+			'isi' => 'admin/v_pasien_admin'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
+
 	public function poli()
 	{
 		$data = array(
@@ -231,5 +244,75 @@ class Admin extends CI_Controller
 		$this->M_admin->delete_obat($data);
 		$this->session->set_flashdata('success', 'Obat berhasil dihapus');
 		redirect('admin/obat');
+	}
+
+	public function tambah_pasien()
+	{
+		$this->form_validation->set_rules('nama', 'Nama Pasien', 'required|min_length[3]|max_length[255]');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
+		$this->form_validation->set_rules('no_ktp', 'No KTP', 'required');
+		$this->form_validation->set_rules('no_hp', 'No HP', 'required|min_length[5]');
+		$this->form_validation->set_rules('no_rm', 'No RM', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$data = array(
+				'title' => 'Pasien',
+				'pasien' => $this->M_admin->get_pasien(),
+				'no_rm' => $this->M_pasien->generate_no_rm(),
+				'isi' => 'admin/v_pasien_admin'
+			);
+			$this->session->set_flashdata('error', 'Gagal menambah pasien. Pastikan semua kolom terisi dengan benar.');
+
+			$this->load->view('layout/v_wrapper', $data, FALSE);
+		} else {
+			$nama = $this->input->post('nama');
+			$alamat = $this->input->post('alamat');
+			$no_ktp = $this->input->post('no_ktp');
+			$no_hp = $this->input->post('no_hp');
+			$no_rm = $this->input->post('no_rm');
+
+			$this->db->where('no_ktp', $no_ktp);
+			$existing_pasien = $this->db->get('tbl_pasien')->row();
+
+			if ($existing_pasien) {
+				$this->session->set_flashdata('error', 'Pasien tersebut sudah terdaftar.');
+				redirect('admin/pasien');
+			} else {
+				$data = [
+					'nama' => $nama,
+					'alamat' => $alamat,
+					'no_ktp' => $no_ktp,
+					'no_hp' => $no_hp,
+					'no_rm' => $no_rm
+				];
+
+				$this->M_admin->insert_pasien($data);
+				$this->session->set_flashdata('success', 'Pasien berhasil ditambahkan.');
+				redirect('admin/pasien');
+			}
+		}
+	}
+
+	public function edit_pasien($id = NULL)
+	{
+		$data = array(
+			'id' => $id,
+			'nama' => $this->input->post('nama'),
+			'alamat' => $this->input->post('alamat'),
+			'no_ktp' => $this->input->post('no_ktp'),
+			'no_hp' => $this->input->post('no_hp'),
+			'no_rm' => $this->input->post('no_rm')
+		);
+		$this->M_admin->edit_pasien($data);
+		$this->session->set_flashdata('success', 'Pasien berhasil diedit');
+		redirect('admin/pasien');
+	}
+
+	public function delete_pasien($id = NULL)
+	{
+		$data = array('id' => $id);
+		$this->M_admin->delete_pasien($data);
+		$this->session->set_flashdata('success', 'Pasien berhasil dihapus');
+		redirect('admin/pasien');
 	}
 }
