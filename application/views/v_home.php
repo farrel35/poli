@@ -109,7 +109,7 @@
                         <h3>Registrasi Pasien</h3>
                         <p>Apabila Anda adalah seorang Pasien, silahkan Registrasi terlebih dahulu untuk melakukan
                             pendaftaran sebagai Pasien!</p>
-                        <a href="#">Registrasi Sekarang</a>
+                        <a href="<?= base_url() ?>pasien/register">Registrasi Sekarang</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -118,7 +118,7 @@
                         <h3>Login Dokter</h3>
                         <p>Apabila Anda adalah seorang Dokter, silahkan Login terlebih dahulu untuk memulai melayani
                             Pasien!</p>
-                        <a href="#">Masuk Sekarang</a>
+                        <a href="<?= base_url() ?>dokter/login">Masuk Sekarang</a>
                     </div>
                 </div>
             </div>

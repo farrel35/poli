@@ -15,7 +15,9 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $detail_akun->nama ?></a>
+                <?php if ($this->session->userdata('role') == 'admin'): ?>
+                <a href="#" class="d-block">Admin</a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -33,6 +35,38 @@
                     <a href="<?= base_url() ?>pasien/poli" class="nav-link">
                         <i class="nav-icon fas fa-calendar-check"></i>
                         <p>Poli</p>
+                    </a>
+                </li>
+                <?php elseif ($this->session->userdata('role') == 'admin'): ?>
+                <!-- Menu for Admin -->
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>admin" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>admin/dokter" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Dokter</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>admin/manage_users" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Pasien</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>admin/poli" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Poli</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>admin/manage_users" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Obat</p>
                     </a>
                 </li>
                 <?php endif; ?>
