@@ -20,19 +20,6 @@ class M_dokter extends CI_Model
         $this->db->insert('tbl_pasien', $data);
     }
 
-    public function login_dokter($nama, $alamat)
-    {
-        $this->db->where('nama', $nama);
-        $this->db->where('alamat', $alamat);
-        $query = $this->db->get('tbl_pasien');
-
-        if ($query->num_rows() == 1) {
-            return $query->row();
-        }
-
-        return false;
-    }
-
     public function get_akun($id_pasien)
     {
         $this->db->select('*');

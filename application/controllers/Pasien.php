@@ -15,7 +15,7 @@ class Pasien extends CI_Controller
 		$id_pasien = $this->session->userdata('id_pasien');
 
 		if (!$id_pasien) {
-			redirect('pasien/login_pasien');
+			redirect('auth/login_pasien');
 		}
 		$data = array(
 			'title' => 'Dashboard',
@@ -82,31 +82,6 @@ class Pasien extends CI_Controller
 				$this->M_pasien->insert_pasien($data);
 				$this->session->set_flashdata('success', 'Pasien berhasil terdaftar dengan No RM: ' . $no_rm);
 				redirect('pasien/register');
-			}
-		}
-	}
-	public function login_pasien()
-	{
-		$this->form_validation->set_rules('nama', 'Fullname', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
-
-		if ($this->form_validation->run() === FALSE) {
-			$this->load->view('pasien/v_login_pasien');
-		} else {
-			$fullname = $this->input->post('nama');
-			$alamat = $this->input->post('alamat');
-
-			$pasien = $this->M_pasien->login_pasien($fullname, $alamat);
-			if ($pasien) {
-				$this->session->set_userdata([
-					'id_pasien' => $pasien->id,
-					'role' => 'pasien',
-				]);
-
-				redirect('pasien');
-			} else {
-				$this->session->set_flashdata('error', 'Nama atau Alamat salah.');
-				redirect('pasien/login_pasien');
 			}
 		}
 	}

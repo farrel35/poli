@@ -47,7 +47,7 @@
                     <?= $this->session->flashdata('success') ?>
                 </div>
                 <?php endif; ?>
-                <?= form_open('dokter/login_dokter') ?>
+                <?= form_open('auth/login_dokter') ?>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="nama" placeholder="Fullname"
                         value="<?= set_value('nama') ?>">

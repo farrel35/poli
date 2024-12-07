@@ -101,7 +101,7 @@
                 <?= form_close() ?>
 
                 <p class="mb-0">
-                    <a href="<?= base_url() ?>pasien/login_pasien" class="text-center">Login account</a>
+                    <a href="<?= base_url() ?>pasien/login" class="text-center">Login account</a>
                 </p>
             </div>
         </div>

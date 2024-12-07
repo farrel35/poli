@@ -37,17 +37,17 @@
             <div class="card-body">
                 <!-- Display Flashdata for Success or Error Messages -->
                 <?php if ($this->session->flashdata('error')): ?>
-                <div class="alert alert-danger">
-                    <?= $this->session->flashdata('error') ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <?= $this->session->flashdata('error') ?>
+                    </div>
                 <?php endif; ?>
 
                 <?php if ($this->session->flashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= $this->session->flashdata('success') ?>
-                </div>
+                    <div class="alert alert-success">
+                        <?= $this->session->flashdata('success') ?>
+                    </div>
                 <?php endif; ?>
-                <?= form_open('pasien/login_pasien') ?>
+                <?= form_open('auth/login_pasien') ?>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="nama" placeholder="Fullname"
                         value="<?= set_value('nama') ?>">
