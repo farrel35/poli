@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class Home extends CI_Controller
 {
 
 	/**
@@ -21,10 +21,6 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$data = array(
-			'title' => 'Home',
-			'isi' => 'v_home'
-		);
-		$this->load->view('layout/v_wrapper', $data, FALSE);
+		$this->load->view('v_home', FALSE);
 	}
 }
