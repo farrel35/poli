@@ -12,8 +12,14 @@ class Pasien extends CI_Controller
 
 	public function index()
 	{
+		$id_pasien = $this->session->userdata('id_pasien');
+
+		if (!$id_pasien) {
+			redirect('pasien/login_pasien');
+		}
 		$data = array(
 			'title' => 'Dashboard',
+			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
 			'isi' => 'pasien/v_dashboard_pasien'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
@@ -27,6 +33,18 @@ class Pasien extends CI_Controller
 	public function register()
 	{
 		$this->load->view('pasien/v_register_pasien', FALSE);
+	}
+
+	public function poli()
+	{
+		$id_pasien = $this->session->userdata('id_pasien');
+
+		$data = array(
+			'title' => 'Poli',
+			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
+			'isi' => 'pasien/v_poli_pasien'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
 
 	public function register_pasien()
@@ -81,7 +99,7 @@ class Pasien extends CI_Controller
 			$pasien = $this->M_pasien->login_pasien($fullname, $alamat);
 			if ($pasien) {
 				$this->session->set_userdata([
-					'id_pasien' => $pasien->id_pasien,
+					'id_pasien' => $pasien->id,
 					'role' => 'pasien',
 				]);
 
