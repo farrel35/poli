@@ -38,6 +38,15 @@ class Admin extends CI_Controller
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
+	public function obat()
+	{
+		$data = array(
+			'title' => 'Obat',
+			'obat' => $this->M_admin->get_obat(),
+			'isi' => 'admin/v_obat_admin'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
 
 	public function tambah_poli()
 	{
@@ -160,5 +169,67 @@ class Admin extends CI_Controller
 		$this->M_admin->delete_dokter($data);
 		$this->session->set_flashdata('success', 'Dokter berhasil dihapus');
 		redirect('admin/dokter');
+	}
+
+	public function tambah_obat()
+	{
+		$this->form_validation->set_rules('nama_obat', 'Nama Obat', 'required|min_length[3]|max_length[255]');
+		$this->form_validation->set_rules('kemasan', 'Kemasan', 'required|min_length[5]');
+		$this->form_validation->set_rules('harga', 'Harga', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$data = array(
+				'title' => 'Obat',
+				'obat' => $this->M_admin->get_obat(),
+				'isi' => 'admin/v_obat_admin'
+			);
+
+			$this->session->set_flashdata('error', 'Gagal menambah obat. Pastikan semua kolom terisi dengan benar.');
+
+			$this->load->view('layout/v_wrapper', $data, FALSE);
+		} else {
+			$nama_obat = $this->input->post('nama_obat');
+			$kemasan = $this->input->post('kemasan');
+			$harga = $this->input->post('harga');
+
+			$this->db->where('nama_obat', $nama_obat);
+			$existing_obat = $this->db->get('tbl_obat')->row();
+
+			if ($existing_obat) {
+				$this->session->set_flashdata('error', 'Obat tersebut sudah terdaftar.');
+				redirect('admin/obat');
+			} else {
+				$data = [
+					'nama_obat' => $nama_obat,
+					'kemasan' => $kemasan,
+					'harga' => $harga
+				];
+
+				$this->M_admin->insert_obat($data);
+				$this->session->set_flashdata('success', 'Obat berhasil ditambahkan.');
+				redirect('admin/obat');
+			}
+		}
+	}
+
+	public function edit_obat($id = NULL)
+	{
+		$data = array(
+			'id' => $id,
+			'nama_obat' => $this->input->post('nama_obat'),
+			'kemasan' => $this->input->post('kemasan'),
+			'harga' => $this->input->post('harga')
+		);
+		$this->M_admin->edit_obat($data);
+		$this->session->set_flashdata('success', 'Obat berhasil diedit');
+		redirect('admin/obat');
+	}
+
+	public function delete_obat($id = NULL)
+	{
+		$data = array('id' => $id);
+		$this->M_admin->delete_obat($data);
+		$this->session->set_flashdata('success', 'Obat berhasil dihapus');
+		redirect('admin/obat');
 	}
 }

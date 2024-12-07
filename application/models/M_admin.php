@@ -50,4 +50,27 @@ class M_admin extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->delete('tbl_dokter', $data);
     }
+
+    public function get_obat()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_obat');
+        return $this->db->get()->result();
+    }
+
+    public function insert_obat($data)
+    {
+        $this->db->insert('tbl_obat', $data);
+    }
+
+    public function edit_obat($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('tbl_obat', $data);
+    }
+    public function delete_obat($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->delete('tbl_obat', $data);
+    }
 }
