@@ -46,7 +46,7 @@ class Dokter extends CI_Controller
 			'menu' => 'Dokter',
 			'title' => 'Jadwal Periksa',
 			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
-			'jadwal_periksa' => $this->M_dokter->get_jadwal_periksa(),
+			'jadwal_periksa' => $this->M_dokter->get_jadwal_periksa($id_dokter),
 			'isi' => 'dokter/v_jadwal_dokter'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
@@ -65,7 +65,7 @@ class Dokter extends CI_Controller
 				'jadwal_periksa' => $this->M_dokter->get_jadwal_periksa(),
 				'isi' => 'dokter/v_jadwal_dokter'
 			);
-			$this->session->set_flashdata('error', 'Gagal menambah pasien. Pastikan semua kolom terisi dengan benar.');
+			$this->session->set_flashdata('error', 'Gagal menambah jadwal. Pastikan semua kolom terisi dengan benar.');
 
 			$this->load->view('layout/v_wrapper', $data, FALSE);
 		} else {

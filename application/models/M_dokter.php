@@ -13,10 +13,11 @@ class M_dokter extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function get_jadwal_periksa()
+    public function get_jadwal_periksa($id_dokter)
     {
         $this->db->select('tbl_jadwal_periksa.*, tbl_dokter.nama as nama_dokter');
         $this->db->from('tbl_jadwal_periksa');
+        $this->db->where('tbl_jadwal_periksa.id_dokter', $id_dokter);
 
         $this->db->join('tbl_dokter', 'tbl_dokter.id = tbl_jadwal_periksa.id_dokter');
 
