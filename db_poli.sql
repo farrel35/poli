@@ -59,9 +59,11 @@ CREATE TABLE IF NOT EXISTS `tbl_dokter` (
   PRIMARY KEY (`id`),
   KEY `FK_tbl_dokter_tbl_poli` (`id_poli`),
   CONSTRAINT `FK_tbl_dokter_tbl_poli` FOREIGN KEY (`id_poli`) REFERENCES `tbl_poli` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_dokter: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_dokter: ~1 rows (approximately)
+INSERT INTO `tbl_dokter` (`id`, `nama`, `alamat`, `no_hp`, `id_poli`) VALUES
+	(1, 'Santoso', 'Semarang', 4294967295, 1);
 
 -- Dumping structure for table db_poli.tbl_jadwal_periksa
 CREATE TABLE IF NOT EXISTS `tbl_jadwal_periksa` (
@@ -70,12 +72,15 @@ CREATE TABLE IF NOT EXISTS `tbl_jadwal_periksa` (
   `hari` varchar(10) NOT NULL DEFAULT '',
   `jam_mulai` time NOT NULL,
   `jam_selesai` time NOT NULL,
+  `isActive` int DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK_tbl_jadwal_periksa_tbl_dokter` (`id_dokter`),
   CONSTRAINT `FK_tbl_jadwal_periksa_tbl_dokter` FOREIGN KEY (`id_dokter`) REFERENCES `tbl_dokter` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_jadwal_periksa: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_jadwal_periksa: ~1 rows (approximately)
+INSERT INTO `tbl_jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_selesai`, `isActive`) VALUES
+	(1, 1, 'Senin', '08:00:00', '10:00:00', 1);
 
 -- Dumping structure for table db_poli.tbl_obat
 CREATE TABLE IF NOT EXISTS `tbl_obat` (
@@ -84,9 +89,13 @@ CREATE TABLE IF NOT EXISTS `tbl_obat` (
   `kemasan` varchar(35) DEFAULT NULL,
   `harga` int unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_obat: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_obat: ~3 rows (approximately)
+INSERT INTO `tbl_obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
+	(1, 'ACT(Artesunate tablet 50 mg + Amodiaquine anhydrid', '2 blister @ 12 tablet / kotak', 44000),
+	(2, 'Albendasol suspensi 200 mg/5 ml', 'Ktk 10 btl @ 10 ml', 6000),
+	(3, 'Alopurinol tablet 100 mg', 'ktk 10 x 10 tablet', 16000);
 
 -- Dumping structure for table db_poli.tbl_pasien
 CREATE TABLE IF NOT EXISTS `tbl_pasien` (
@@ -97,9 +106,11 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   `no_hp` int unsigned NOT NULL,
   `no_rm` char(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_pasien: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_pasien: ~1 rows (approximately)
+INSERT INTO `tbl_pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
+	(1, 'Farrel Ardian', 'Semarang', 12345, 4294967295, '202412-1');
 
 -- Dumping structure for table db_poli.tbl_periksa
 CREATE TABLE IF NOT EXISTS `tbl_periksa` (
@@ -121,9 +132,11 @@ CREATE TABLE IF NOT EXISTS `tbl_poli` (
   `nama_poli` varchar(25) NOT NULL,
   `keterangan` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_poli: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_poli: ~1 rows (approximately)
+INSERT INTO `tbl_poli` (`id`, `nama_poli`, `keterangan`) VALUES
+	(1, 'Poli Umum', 'Dokter Umum');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

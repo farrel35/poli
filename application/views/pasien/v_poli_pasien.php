@@ -28,7 +28,7 @@
             <div class="mb-3">
                 <label class="form-label">Pilih Poli</label>
                 <select id="inputPoli" class="form-control">
-                    <option value="">Open this select menu</option>
+                    <option value="">Pilih Poli</option>
                     <?php foreach ($poli as $p): ?>
                     <option value="<?= $p->id ?>"><?= $p->nama_poli ?></option>
                     <?php endforeach; ?>
@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label class="form-label">Pilih Jadwal</label>
                 <select id="inputJadwal" class="form-control" name="id_jadwal">
-                    <option value="">Open this select menu</option>
+                    <option value="">Pilih Jadwal</option>
                 </select>
             </div>
             <?= form_error('id_jadwal', '<div class="text-danger">', '</div>') ?>

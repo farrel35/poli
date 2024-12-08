@@ -62,7 +62,6 @@
     </div>
     <!-- /.card -->
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -75,8 +74,10 @@
             </div>
             <div class="modal-body">
                 <?= form_open('dokter/tambah_jadwal_periksa') ?>
-                <div class="input-group mb-3">
-                    <select name="hari" class="form-control">
+                <!-- Form Group for Hari -->
+                <div class="form-group mb-3">
+                    <label for="hari">Hari</label>
+                    <select name="hari" id="hari" class="form-control">
                         <option value="Senin" <?= set_select('hari', 'Senin'); ?>>Senin</option>
                         <option value="Selasa" <?= set_select('hari', 'Selasa'); ?>>Selasa</option>
                         <option value="Rabu" <?= set_select('hari', 'Rabu'); ?>>Rabu</option>
@@ -85,19 +86,25 @@
                         <option value="Sabtu" <?= set_select('hari', 'Sabtu'); ?>>Sabtu</option>
                         <option value="Minggu" <?= set_select('hari', 'Minggu'); ?>>Minggu</option>
                     </select>
+                    <?= form_error('hari', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('hari', '<div class="text-danger">', '</div>') ?>
-                <!-- Jam Mulai -->
-                <div class="input-group mb-3">
-                    <input type="time" class="form-control" name="jam_mulai" value="<?= set_value('jam_mulai') ?>">
-                </div>
-                <?= form_error('jam_mulai', '<div class="text-danger">', '</div>') ?>
 
-                <!-- Jam Selesai -->
-                <div class="input-group mb-3">
-                    <input type="time" class="form-control" name="jam_selesai" value="<?= set_value('jam_selesai') ?>">
+                <!-- Form Group for Jam Mulai -->
+                <div class="form-group mb-3">
+                    <label for="jam_mulai">Jam Mulai</label>
+                    <input type="time" id="jam_mulai" class="form-control" name="jam_mulai"
+                        value="<?= set_value('jam_mulai') ?>">
+                    <?= form_error('jam_mulai', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('jam_selesai', '<div class="text-danger">', '</div>') ?>
+
+                <!-- Form Group for Jam Selesai -->
+                <div class="form-group mb-3">
+                    <label for="jam_selesai">Jam Selesai</label>
+                    <input type="time" id="jam_selesai" class="form-control" name="jam_selesai"
+                        value="<?= set_value('jam_selesai') ?>">
+                    <?= form_error('jam_selesai', '<div class="text-danger">', '</div>') ?>
+                </div>
+
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -107,7 +114,6 @@
         </div>
     </div>
 </div>
-
 
 <?php foreach ($jadwal_periksa as $key => $value) { ?>
 <div class="modal fade" id="edit<?= $value->id ?>">
@@ -121,8 +127,10 @@
             </div>
             <div class="modal-body">
                 <?= form_open('dokter/edit_jadwal_periksa/' . $value->id); ?>
-                <div class="input-group mb-3">
-                    <select name="hari" class="form-control" disabled>
+                <!-- Form Group for Hari -->
+                <div class="form-group mb-3">
+                    <label for="hari">Hari</label>
+                    <select name="hari" id="hari" class="form-control" disabled>
                         <option value="Senin" <?= ($value->hari == 'Senin') ? 'selected' : ''; ?>>Senin</option>
                         <option value="Selasa" <?= ($value->hari == 'Selasa') ? 'selected' : ''; ?>>Selasa</option>
                         <option value="Rabu" <?= ($value->hari == 'Rabu') ? 'selected' : ''; ?>>Rabu</option>
@@ -131,30 +139,35 @@
                         <option value="Sabtu" <?= ($value->hari == 'Sabtu') ? 'selected' : ''; ?>>Sabtu</option>
                         <option value="Minggu" <?= ($value->hari == 'Minggu') ? 'selected' : ''; ?>>Minggu</option>
                     </select>
+                    <?= form_error('hari', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('hari', '<div class="text-danger">', '</div>') ?>
 
-                <!-- Jam Mulai -->
-                <div class="input-group mb-3">
-                    <input type="time" class="form-control" name="jam_mulai"
+                <!-- Form Group for Jam Mulai -->
+                <div class="form-group mb-3">
+                    <label for="jam_mulai">Jam Mulai</label>
+                    <input type="time" id="jam_mulai" class="form-control" name="jam_mulai"
                         value="<?= set_value('jam_mulai', $value->jam_mulai) ?>" disabled>
+                    <?= form_error('jam_mulai', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('jam_mulai', '<div class="text-danger">', '</div>') ?>
 
-                <!-- Jam Selesai -->
-                <div class="input-group mb-3">
-                    <input type="time" class="form-control" name="jam_selesai"
+                <!-- Form Group for Jam Selesai -->
+                <div class="form-group mb-3">
+                    <label for="jam_selesai">Jam Selesai</label>
+                    <input type="time" id="jam_selesai" class="form-control" name="jam_selesai"
                         value="<?= set_value('jam_selesai', $value->jam_selesai) ?>" disabled>
+                    <?= form_error('jam_selesai', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('jam_selesai', '<div class="text-danger">', '</div>') ?>
-                <!-- isActive -->
-                <div class="input-group mb-3">
-                    <select name="isActive" class="form-control">
+
+                <!-- Form Group for isActive -->
+                <div class="form-group mb-3">
+                    <label for="isActive">Status</label>
+                    <select name="isActive" id="isActive" class="form-control">
                         <option value="1" <?= ($value->isActive == 1) ? 'selected' : ''; ?>>Aktif</option>
                         <option value="0" <?= ($value->isActive == 0) ? 'selected' : ''; ?>>Tidak Aktif</option>
                     </select>
+                    <?= form_error('isActive', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('isActive', '<div class="text-danger">', '</div>') ?>
+
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -162,11 +175,9 @@
             </div>
             <?= form_close() ?>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
+
 <?php } ?>
 
 <?php foreach ($jadwal_periksa as $key => $value) { ?>
@@ -180,18 +191,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus jadwal <?= $value->hari ?>?</h1>
+                <h4>Apakah anda yakin ingin menghapus jadwal <?= $value->hari ?>?</h4>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <a href="<?= base_url('dokter/delete_jadwal_periksa/' . $value->id) ?>"
                     class="btn btn-primary">Hapus</a>
             </div>
-
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>

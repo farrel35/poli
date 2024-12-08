@@ -51,8 +51,7 @@
     </div>
     <!-- /.card -->
 </div>
-
-<!-- Modal -->
+<!-- Modal for Add Obat -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -64,37 +63,27 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/tambah_obat') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama_obat" placeholder="Nama obat"
-                        value="<?= set_value('nama_obat') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-pills"></span>
-                        </div>
-                    </div>
-                </div>
-                <?= form_error('nama_obat', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="kemasan" placeholder="Kemasan"
+                <div class="form-group">
+                    <label for="nama_obat">Nama Obat</label>
+                    <input type="text" class="form-control" id="nama_obat" name="nama_obat" placeholder="Nama obat"
+                        value="<?= set_value('nama_obat') ?>">
+                    <?= form_error('nama_obat', '<div class="text-danger">', '</div>') ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="kemasan">Kemasan</label>
+                    <input type="text" class="form-control" id="kemasan" name="kemasan" placeholder="Kemasan"
                         value="<?= set_value('kemasan') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-box"></span>
-                        </div>
-                    </div>
+                    <?= form_error('kemasan', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('kemasan', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="harga" placeholder="Harga"
+
+                <div class="form-group">
+                    <label for="harga">Harga</label>
+                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga"
                         value="<?= set_value('harga') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-money-bill"></span>
-                        </div>
-                    </div>
+                    <?= form_error('harga', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('harga', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -106,6 +95,7 @@
     </div>
 </div>
 
+<!-- Modal for Edit Obat -->
 <?php foreach ($obat as $key => $value) { ?>
 <div class="modal fade" id="edit<?= $value->id ?>">
     <div class="modal-dialog">
@@ -118,37 +108,27 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/edit_obat/' . $value->id); ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama_obat" placeholder="Nama obat"
-                        value="<?= $value->nama_obat ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-pills"></span>
-                        </div>
-                    </div>
-                </div>
-                <?= form_error('nama_obat', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="kemasan" placeholder="Kemasan"
+                <div class="form-group">
+                    <label for="nama_obat">Nama Obat</label>
+                    <input type="text" class="form-control" id="nama_obat" name="nama_obat" placeholder="Nama obat"
+                        value="<?= $value->nama_obat ?>">
+                    <?= form_error('nama_obat', '<div class="text-danger">', '</div>') ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="kemasan">Kemasan</label>
+                    <input type="text" class="form-control" id="kemasan" name="kemasan" placeholder="Kemasan"
                         value="<?= $value->kemasan ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-box"></span>
-                        </div>
-                    </div>
+                    <?= form_error('kemasan', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('kemasan', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="harga" placeholder="Harga"
+
+                <div class="form-group">
+                    <label for="harga">Harga</label>
+                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga"
                         value="<?= $value->harga ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-money-bill"></span>
-                        </div>
-                    </div>
+                    <?= form_error('harga', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('harga', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -157,13 +137,11 @@
             </div>
             <?= form_close() ?>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>
 
+<!-- Modal for Delete Obat -->
 <?php foreach ($obat as $key => $value) { ?>
 <div class="modal fade" id="delete<?= $value->id ?>">
     <div class="modal-dialog">
@@ -175,17 +153,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus <?= $value->nama_obat ?>?</h1>
+                <h4>Apakah anda yakin ingin menghapus <?= $value->nama_obat ?>?</h4>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <a href="<?= base_url('admin/delete_obat/' . $value->id) ?>" class="btn btn-primary">Hapus</a>
             </div>
-
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>

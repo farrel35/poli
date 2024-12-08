@@ -66,41 +66,56 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/tambah_dokter') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama" placeholder="Nama dokter"
-                        value="<?= set_value('nama') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+
+                <!-- Name Input Group -->
+                <div class="form-group">
+                    <label for="nama">Nama Dokter</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama dokter"
+                            value="<?= set_value('nama') ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat"
-                        value="<?= set_value('alamat') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-home"></span>
+                <!-- Address Input Group -->
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat"
+                            value="<?= set_value('alamat') ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-home"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
                 </div>
 
-                <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="no_hp" placeholder="No HP"
-                        value="<?= set_value('no_hp') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-phone"></span>
+                <!-- Phone Number Input Group -->
+                <div class="form-group">
+                    <label for="no_hp">No HP</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No HP"
+                            value="<?= set_value('no_hp') ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 </div>
 
-                <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <select class="form-control" name="id_poli">
+                <!-- Poli Selection -->
+                <div class="form-group">
+                    <label for="id_poli">Pilih Poli</label>
+                    <select class="form-control" id="id_poli" name="id_poli">
                         <option value="">Pilih Poli</option>
                         <?php foreach ($poli as $value): ?>
                         <option value="<?= $value->id ?>" <?= set_select('id_poli', $value->id) ?>>
@@ -108,8 +123,8 @@
                         </option>
                         <?php endforeach; ?>
                     </select>
+                    <?= form_error('id_poli', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('id_poli', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -122,7 +137,7 @@
 </div>
 
 <?php foreach ($dokter as $key => $dokters) { ?>
-<div class="modal fade" id="edit<?= $dokters->id ?>">
+<div class="modal fade" id="edit<?= $dokters->id ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -133,49 +148,64 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/edit_dokter/' . $dokters->id); ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama" placeholder="Nama dokter"
-                        value="<?= $dokters->nama ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+
+                <!-- Name Input -->
+                <div class="form-group">
+                    <label for="nama">Nama Dokter</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama dokter"
+                            value="<?= $dokters->nama ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat"
-                        value="<?= $dokters->alamat ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-home"></span>
+                <!-- Address Input -->
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat"
+                            value="<?= $dokters->alamat ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-home"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
                 </div>
 
-                <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="no_hp" placeholder="No HP"
-                        value="<?= $dokters->no_hp ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-phone"></span>
+                <!-- Phone Number Input -->
+                <div class="form-group">
+                    <label for="no_hp">No HP</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="no_hp" id="no_hp" placeholder="No HP"
+                            value="<?= $dokters->no_hp ?>">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
                         </div>
                     </div>
+                    <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 </div>
 
-                <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
-                <div class="input-group mb-3">
-                    <select class="form-control" name="id_poli">
+                <!-- Poli Selection -->
+                <div class="form-group">
+                    <label for="id_poli">Pilih Poli</label>
+                    <select class="form-control" name="id_poli" id="id_poli">
                         <?php foreach ($poli as $value): ?>
                         <option value="<?= $value->id ?>" <?= ($dokters->id_poli == $value->id) ? 'selected' : '' ?>>
                             <?= $value->nama_poli ?>
                         </option>
                         <?php endforeach; ?>
                     </select>
+                    <?= form_error('id_poli', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('id_poli', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -184,15 +214,14 @@
             </div>
             <?= form_close() ?>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>
 
+
 <?php foreach ($dokter as $key => $value) { ?>
-<div class="modal fade" id="delete<?= $value->id ?>">
+<div class="modal fade" id="delete<?= $value->id ?>" tabindex="-1" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -202,17 +231,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus dokter <?= $value->nama ?>?</h1>
+                <h4>Apakah anda yakin ingin menghapus dokter <?= $value->nama ?>?</h4>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="<?= base_url('admin/delete_dokter/' . $value->id) ?>" class="btn btn-primary">Hapus</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="<?= base_url('admin/delete_dokter/' . $value->id) ?>" class="btn btn-danger">Hapus</a>
             </div>
-
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>

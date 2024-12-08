@@ -55,8 +55,7 @@
     </div>
     <!-- /.card -->
 </div>
-
-<!-- Modal -->
+<!-- Modal for Add Pasien -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,59 +67,41 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/tambah_pasien') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama" placeholder="Nama pasien"
+
+                <div class="form-group">
+                    <label for="nama">Nama Pasien</label>
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama pasien"
                         value="<?= set_value('nama') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
+                    <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat"
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat"
                         value="<?= set_value('alamat') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-home"></span>
-                        </div>
-                    </div>
+                    <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="no_ktp" placeholder="No KTP"
+                <div class="form-group">
+                    <label for="no_ktp">No KTP</label>
+                    <input type="number" class="form-control" name="no_ktp" id="no_ktp" placeholder="No KTP"
                         value="<?= set_value('no_ktp') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-id-card"></span>
-                        </div>
-                    </div>
+                    <?= form_error('no_ktp', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_ktp', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="no_hp" placeholder="No HP"
+                <div class="form-group">
+                    <label for="no_hp">No HP</label>
+                    <input type="number" class="form-control" name="no_hp" id="no_hp" placeholder="No HP"
                         value="<?= set_value('no_hp') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-phone"></span>
-                        </div>
-                    </div>
+                    <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="no_rm" placeholder="No RM" value="<?= $no_rm ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-hashtag"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="no_rm">No RM</label>
+                    <input type="text" class="form-control" name="no_rm" id="no_rm" placeholder="No RM"
+                        value="<?= $no_rm ?>">
+                    <?= form_error('no_rm', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_rm', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -132,6 +113,7 @@
     </div>
 </div>
 
+<!-- Modal for Edit Pasien -->
 <?php foreach ($pasien as $key => $value) { ?>
 <div class="modal fade" id="edit<?= $value->id ?>">
     <div class="modal-dialog">
@@ -144,60 +126,41 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/edit_pasien/' . $value->id); ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama" placeholder="Nama pasien"
+
+                <div class="form-group">
+                    <label for="nama">Nama Pasien</label>
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama pasien"
                         value="<?= $value->nama ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
+                    <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('nama', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="alamat" placeholder="Alamat"
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat"
                         value="<?= $value->alamat ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-home"></span>
-                        </div>
-                    </div>
+                    <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('alamat', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="no_ktp" placeholder="No KTP"
+                <div class="form-group">
+                    <label for="no_ktp">No KTP</label>
+                    <input type="number" class="form-control" name="no_ktp" id="no_ktp" placeholder="No KTP"
                         value="<?= $value->no_ktp ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-id-card"></span>
-                        </div>
-                    </div>
+                    <?= form_error('no_ktp', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_ktp', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="no_hp" placeholder="No HP"
+                <div class="form-group">
+                    <label for="no_hp">No HP</label>
+                    <input type="number" class="form-control" name="no_hp" id="no_hp" placeholder="No HP"
                         value="<?= $value->no_hp ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-phone"></span>
-                        </div>
-                    </div>
+                    <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="no_rm" placeholder="No RM"
+                <div class="form-group">
+                    <label for="no_rm">No RM</label>
+                    <input type="text" class="form-control" name="no_rm" id="no_rm" placeholder="No RM"
                         value="<?= $value->no_rm ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-hashtag"></span>
-                        </div>
-                    </div>
+                    <?= form_error('no_rm', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('no_rm', '<div class="text-danger">', '</div>') ?>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -206,13 +169,11 @@
             </div>
             <?= form_close() ?>
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>
 
+<!-- Modal for Delete Pasien -->
 <?php foreach ($pasien as $key => $value) { ?>
 <div class="modal fade" id="delete<?= $value->id ?>">
     <div class="modal-dialog">
@@ -224,17 +185,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus <?= $value->nama ?>?</h1>
+                <h4>Apakah anda yakin ingin menghapus <?= $value->nama ?>?</h4>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <a href="<?= base_url('admin/delete_pasien/' . $value->id) ?>" class="btn btn-primary">Hapus</a>
             </div>
-
         </div>
-        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
 <?php } ?>

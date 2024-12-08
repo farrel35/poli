@@ -49,7 +49,6 @@
     </div>
     <!-- /.card -->
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -62,27 +61,20 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/tambah_poli') ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama_poli" placeholder="Nama Poli"
-                        value="<?= set_value('nama_poli') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-hospital"></span>
-                        </div>
-                    </div>
-                </div>
-                <?= form_error('nama_poli', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="keterangan" placeholder="Keterangan"
-                        value="<?= set_value('keterangan') ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-info"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="nama_poli">Nama Poli</label>
+                    <input type="text" class="form-control" name="nama_poli" id="nama_poli" placeholder="Nama Poli"
+                        value="<?= set_value('nama_poli') ?>">
+                    <?= form_error('nama_poli', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('keterangan', '<div class="text-danger">', '</div>') ?>
+
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"
+                        value="<?= set_value('keterangan') ?>">
+                    <?= form_error('keterangan', '<div class="text-danger">', '</div>') ?>
+                </div>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -106,27 +98,20 @@
             </div>
             <div class="modal-body">
                 <?= form_open('admin/edit_poli/' . $value->id); ?>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="nama_poli" placeholder="Nama Poli"
-                        value="<?= $value->nama_poli ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-hospital"></span>
-                        </div>
-                    </div>
-                </div>
-                <?= form_error('nama_poli', '<div class="text-danger">', '</div>') ?>
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="keterangan" placeholder="Keterangan"
-                        value="<?= $value->keterangan ?>">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-info"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="nama_poli">Nama Poli</label>
+                    <input type="text" class="form-control" name="nama_poli" id="nama_poli" placeholder="Nama Poli"
+                        value="<?= $value->nama_poli ?>">
+                    <?= form_error('nama_poli', '<div class="text-danger">', '</div>') ?>
                 </div>
-                <?= form_error('keterangan', '<div class="text-danger">', '</div>') ?>
+
+                <div class="form-group">
+                    <label for="keterangan">Keterangan</label>
+                    <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan"
+                        value="<?= $value->keterangan ?>">
+                    <?= form_error('keterangan', '<div class="text-danger">', '</div>') ?>
+                </div>
 
             </div>
             <div class="modal-footer justify-content-between">
@@ -153,7 +138,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Apakah anda yakin ingin menghapus <?= $value->nama_poli ?>?</h1>
+                <h4>Apakah anda yakin ingin menghapus <?= $value->nama_poli ?>?</h4>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
