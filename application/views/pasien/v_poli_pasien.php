@@ -3,15 +3,29 @@
     <div class="card">
         <h5 class="card-header bg-primary">
             <?php if ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger">
-                <?= $this->session->flashdata('error') ?>
-            </div>
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "progressBar": true, // Enable the progress bar
+                            "timeOut": "5000", // Set the time for the notification to stay
+                            "extendedTimeOut": "1000" // Time to delay after mouseover
+                        };
+                        toastr.error('<?= $this->session->flashdata('error') ?>');
+                    });
+                </script>
             <?php endif; ?>
 
             <?php if ($this->session->flashdata('success')): ?>
-            <div class="alert alert-success">
-                <?= $this->session->flashdata('success') ?>
-            </div>
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "progressBar": true, // Enable the progress bar
+                            "timeOut": "5000", // Set the time for the notification to stay
+                            "extendedTimeOut": "1000" // Time to delay after mouseover
+                        };
+                        toastr.success('<?= $this->session->flashdata('success') ?>');
+                    });
+                </script>
             <?php endif; ?>
             Daftar Poli
         </h5>
@@ -30,7 +44,7 @@
                 <select id="inputPoli" class="form-control">
                     <option value="">Pilih Poli</option>
                     <?php foreach ($poli as $p): ?>
-                    <option value="<?= $p->id ?>"><?= $p->nama_poli ?></option>
+                        <option value="<?= $p->id ?>"><?= $p->nama_poli ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -56,24 +70,24 @@
     <!-- End registrarion poli -->
 </div>
 <script>
-document.getElementById('inputPoli').addEventListener('change', function() {
-    var idPoli = this.value;
+    document.getElementById('inputPoli').addEventListener('change', function() {
+        var idPoli = this.value;
 
-    fetch(`<?= base_url('pasien/get_jadwal_by_poli/') ?>${idPoli}`)
-        .then(response => response.json())
-        .then(data => {
-            const jadwalSelect = document.getElementById('inputJadwal');
-            jadwalSelect.innerHTML = '';
-            data.forEach(jadwal => {
-                const option = document.createElement('option');
-                option.value = jadwal.id;
-                option.textContent =
-                    `${jadwal.nama} | ${jadwal.hari} | ${jadwal.jam_mulai} - ${jadwal.jam_selesai}`;
-                jadwalSelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching jadwal:', error));
-});
+        fetch(`<?= base_url('pasien/get_jadwal_by_poli/') ?>${idPoli}`)
+            .then(response => response.json())
+            .then(data => {
+                const jadwalSelect = document.getElementById('inputJadwal');
+                jadwalSelect.innerHTML = '';
+                data.forEach(jadwal => {
+                    const option = document.createElement('option');
+                    option.value = jadwal.id;
+                    option.textContent =
+                        `${jadwal.nama} | ${jadwal.hari} | ${jadwal.jam_mulai} - ${jadwal.jam_selesai}`;
+                    jadwalSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching jadwal:', error));
+    });
 </script>
 <div class="col-8">
     <!-- Registration poli history -->
@@ -95,22 +109,22 @@ document.getElementById('inputPoli').addEventListener('change', function() {
                 </thead>
                 <tbody>
                     <?php foreach ($riwayat_poli as $index => $value): ?>
-                    <tr>
-                        <td><?= $index + 1 ?></td>
-                        <td><?= $value->nama_poli ?></td> <!-- Menampilkan Nama Poli -->
-                        <td><?= $value->nama_dokter ?></td> <!-- Menampilkan Nama Dokter -->
-                        <td><?= $value->hari ?></td> <!-- Menampilkan Hari -->
-                        <td><?= $value->jam_mulai ?></td> <!-- Menampilkan Jam Mulai -->
-                        <td><?= $value->jam_selesai ?></td> <!-- Menampilkan Jam Selesai -->
-                        <td><?= $value->no_antrian ?></td> <!-- Menampilkan No Antrian -->
-                        <td>
-                            <!-- Aksi untuk Edit atau Delete -->
-                            <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
-                                class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                            <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
-                                class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= $index + 1 ?></td>
+                            <td><?= $value->nama_poli ?></td> <!-- Menampilkan Nama Poli -->
+                            <td><?= $value->nama_dokter ?></td> <!-- Menampilkan Nama Dokter -->
+                            <td><?= $value->hari ?></td> <!-- Menampilkan Hari -->
+                            <td><?= $value->jam_mulai ?></td> <!-- Menampilkan Jam Mulai -->
+                            <td><?= $value->jam_selesai ?></td> <!-- Menampilkan Jam Selesai -->
+                            <td><?= $value->no_antrian ?></td> <!-- Menampilkan No Antrian -->
+                            <td>
+                                <!-- Aksi untuk Edit atau Delete -->
+                                <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
+                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

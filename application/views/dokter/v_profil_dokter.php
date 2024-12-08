@@ -3,15 +3,29 @@
     <div class="card card-primary">
         <div class="card-header">
             <?php if ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger">
-                <?= $this->session->flashdata('error') ?>
-            </div>
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "progressBar": true, // Enable the progress bar
+                            "timeOut": "5000", // Set the time for the notification to stay
+                            "extendedTimeOut": "1000" // Time to delay after mouseover
+                        };
+                        toastr.error('<?= $this->session->flashdata('error') ?>');
+                    });
+                </script>
             <?php endif; ?>
 
             <?php if ($this->session->flashdata('success')): ?>
-            <div class="alert alert-success">
-                <?= $this->session->flashdata('success') ?>
-            </div>
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "progressBar": true, // Enable the progress bar
+                            "timeOut": "5000", // Set the time for the notification to stay
+                            "extendedTimeOut": "1000" // Time to delay after mouseover
+                        };
+                        toastr.success('<?= $this->session->flashdata('success') ?>');
+                    });
+                </script>
             <?php endif; ?>
             <h3 class="card-title">Edit Profil</h3>
         </div>
