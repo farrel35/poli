@@ -74,7 +74,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                    <a href="<?= base_url() ?>dokter/profil" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Profil</p>
                     </a>
