@@ -52,6 +52,32 @@ class Dokter extends CI_Controller
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
 
+	public function profil()
+	{
+		$id_dokter = $this->session->userdata('id_dokter');
+
+		$data = array(
+			'menu' => 'Dokter',
+			'title' => 'Profil',
+			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
+			'isi' => 'dokter/v_profil_dokter'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
+
+	public function edit_profil($id = NULL)
+	{
+		$data = array(
+			'id' => $id,
+			'nama' => $this->input->post('nama'),
+			'alamat' => $this->input->post('alamat'),
+			'no_hp' => $this->input->post('no_hp')
+		);
+		$this->M_dokter->edit_profil($data);
+		$this->session->set_flashdata('success', 'Profil berhasil diedit');
+		redirect('dokter/profil');
+	}
+
 	public function tambah_jadwal_periksa()
 	{
 		$this->set_validation_rules('tambah_jadwal_periksa');
@@ -62,7 +88,7 @@ class Dokter extends CI_Controller
 				'menu' => 'Dokter',
 				'title' => 'Jadwal Periksa',
 				'detail_akun' => $this->M_dokter->get_akun($id_dokter),
-				'jadwal_periksa' => $this->M_dokter->get_jadwal_periksa(),
+				'jadwal_periksa' => $this->M_dokter->get_jadwal_periksa($id_dokter),
 				'isi' => 'dokter/v_jadwal_dokter'
 			);
 			$this->session->set_flashdata('error', 'Gagal menambah jadwal. Pastikan semua kolom terisi dengan benar.');

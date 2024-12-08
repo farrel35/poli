@@ -13,6 +13,12 @@ class M_dokter extends CI_Model
         return $this->db->get()->row();
     }
 
+    public function edit_profil($data)
+    {
+        $this->db->where('id', $data['id']);
+        $this->db->update('tbl_dokter', $data);
+    }
+
     public function get_jadwal_periksa($id_dokter)
     {
         $this->db->select('tbl_jadwal_periksa.*, tbl_dokter.nama as nama_dokter');
@@ -23,7 +29,6 @@ class M_dokter extends CI_Model
 
         return $this->db->get()->result();
     }
-
 
     public function insert_jadwal_periksa($data)
     {
