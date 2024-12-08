@@ -11,6 +11,20 @@ class Dokter extends CI_Controller
 		$this->isLogin();
 	}
 
+	private function set_validation_rules($type)
+	{
+		$rules = [
+			'tambah_jadwal_periksa' => [
+				['field' => 'hari', 'label' => 'Hari', 'rules' => 'required'],
+				['field' => 'jam_mulai', 'label' => 'Jam Mulai', 'rules' => 'required'],
+				['field' => 'jam_selesai', 'label' => 'Jam Selesai', 'rules' => 'required']
+			]
+		];
+
+		if (isset($rules[$type])) {
+			$this->form_validation->set_rules($rules[$type]);
+		}
+	}
 	public function index()
 	{
 		$id_dokter = $this->session->userdata('id_dokter');
@@ -40,9 +54,7 @@ class Dokter extends CI_Controller
 
 	public function tambah_jadwal_periksa()
 	{
-		$this->form_validation->set_rules('hari', 'Hari', 'required');
-		$this->form_validation->set_rules('jam_mulai', 'Jam Mulai', 'required');
-		$this->form_validation->set_rules('jam_selesai', 'Jam Selesai', 'required');
+		$this->set_validation_rules('tambah_jadwal_periksa');
 
 		$id_dokter = $this->session->userdata('id_dokter');
 		if ($this->form_validation->run() === FALSE) {
