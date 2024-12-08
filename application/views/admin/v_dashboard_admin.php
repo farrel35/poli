@@ -45,7 +45,7 @@
         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-pills"></i></span>
 
         <div class="info-box-content">
-            <span class="info-box-text">obat</span>
+            <span class="info-box-text">Obat</span>
             <span class="info-box-number">
                 <?= $obat ?>
             </span>

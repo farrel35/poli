@@ -13,7 +13,7 @@
             </div>
             <?php endif; ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah pasien
+                Tambah Pasien
             </button>
         </div>
         <!-- /.card-header -->

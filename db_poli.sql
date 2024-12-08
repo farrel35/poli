@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `tbl_obat` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_obat: ~3 rows (approximately)
+-- Dumping data for table db_poli.tbl_obat: ~0 rows (approximately)
 INSERT INTO `tbl_obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
 	(1, 'ACT(Artesunate tablet 50 mg + Amodiaquine anhydrid', '2 blister @ 12 tablet / kotak', 44000),
 	(2, 'Albendasol suspensi 200 mg/5 ml', 'Ktk 10 btl @ 10 ml', 6000),
@@ -102,15 +102,15 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nama` varchar(150) NOT NULL DEFAULT '',
   `alamat` varchar(255) NOT NULL DEFAULT '',
-  `no_ktp` int unsigned NOT NULL,
-  `no_hp` int unsigned NOT NULL,
+  `no_ktp` varchar(50) NOT NULL DEFAULT '',
+  `no_hp` varchar(50) NOT NULL DEFAULT '',
   `no_rm` char(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table db_poli.tbl_pasien: ~1 rows (approximately)
 INSERT INTO `tbl_pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
-	(1, 'Farrel Ardian', 'Semarang', 12345, 4294967295, '202412-1');
+	(1, 'Farrel Ardian', 'Semarang', '12345', '4294967295', '202412-1');
 
 -- Dumping structure for table db_poli.tbl_periksa
 CREATE TABLE IF NOT EXISTS `tbl_periksa` (
