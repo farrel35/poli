@@ -50,15 +50,33 @@
                 <!-- Menu for Dokter -->
                 <?php elseif ($this->session->userdata('role') == 'dokter'): ?>
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien" class="nav-link">
+                    <a href="<?= base_url() ?>dokter" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url() ?>pasien/poli" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-check"></i>
-                        <p>Poli</p>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>Jadwal Periksa</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                        <i class="nav-icon fas fa-stethoscope"></i>
+                        <p>Memeriksa Pasien</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                        <i class="nav-icon fas fa-notes-medical"></i>
+                        <p>Riwayat Pasien</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Profil</p>
                     </a>
                 </li>
                 <li class="nav-item">
