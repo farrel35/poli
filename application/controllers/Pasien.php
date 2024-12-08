@@ -16,6 +16,7 @@ class Pasien extends CI_Controller
 		$id_pasien = $this->session->userdata('id_pasien');
 
 		$data = array(
+			'menu' => 'Pasien',
 			'title' => 'Dashboard',
 			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
 			'isi' => 'pasien/v_dashboard_pasien'
@@ -28,6 +29,7 @@ class Pasien extends CI_Controller
 		$id_pasien = $this->session->userdata('id_pasien');
 
 		$data = array(
+			'menu' => 'Pasien',
 			'title' => 'Poli',
 			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
 			'isi' => 'pasien/v_poli_pasien'

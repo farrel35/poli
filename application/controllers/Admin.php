@@ -9,17 +9,14 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->model('M_pasien');
+		$this->load->model('M_auth');
 		$this->isLogin();
 	}
 
 	public function index()
 	{
-		$role = $this->session->userdata('role');
-
-		if ($role != 'admin') {
-			redirect('auth/login_dokter');
-		}
 		$data = array(
+			'menu' => 'Admin',
 			'title' => 'Dashboard',
 			'isi' => 'admin/v_dashboard_admin'
 		);
@@ -29,6 +26,7 @@ class Admin extends CI_Controller
 	public function dokter()
 	{
 		$data = array(
+			'menu' => 'Admin',
 			'title' => 'Dokter',
 			'dokter' => $this->M_admin->get_dokter(),
 			'poli' => $this->M_admin->get_poli(),
@@ -40,9 +38,10 @@ class Admin extends CI_Controller
 	public function pasien()
 	{
 		$data = array(
+			'menu' => 'Admin',
 			'title' => 'Pasien',
 			'pasien' => $this->M_admin->get_pasien(),
-			'no_rm' => $this->M_pasien->generate_no_rm(),
+			'no_rm' => $this->M_auth->generate_no_rm(),
 			'isi' => 'admin/v_pasien_admin'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
@@ -51,6 +50,7 @@ class Admin extends CI_Controller
 	public function poli()
 	{
 		$data = array(
+			'menu' => 'Admin',
 			'title' => 'Poli',
 			'poli' => $this->M_admin->get_poli(),
 			'isi' => 'admin/v_poli_admin'
@@ -60,6 +60,7 @@ class Admin extends CI_Controller
 	public function obat()
 	{
 		$data = array(
+			'menu' => 'Admin',
 			'title' => 'Obat',
 			'obat' => $this->M_admin->get_obat(),
 			'isi' => 'admin/v_obat_admin'

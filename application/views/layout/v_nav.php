@@ -16,9 +16,9 @@
             </div>
             <div class="info">
                 <?php if ($this->session->userdata('role') == 'admin'): ?>
-                <a href="#" class="d-block">Admin</a>
+                    <a href="#" class="d-block">Admin</a>
                 <?php else: ?>
-                <a href="#" class="d-block"><?= $detail_akun->nama ?></a>
+                    <a href="#" class="d-block"><?= $detail_akun->nama ?></a>
                 <?php endif; ?>
             </div>
         </div>
@@ -27,63 +27,63 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <?php if ($this->session->userdata('role') == 'pasien'): ?>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-check"></i>
-                        <p>Poli</p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>pasien" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-check"></i>
+                            <p>Poli</p>
+                        </a>
+                    </li>
                 <?php elseif ($this->session->userdata('role') == 'dokter'): ?>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>pasien/poli" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-check"></i>
-                        <p>Poli</p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>pasien" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-check"></i>
+                            <p>Poli</p>
+                        </a>
+                    </li>
                 <?php elseif ($this->session->userdata('role') == 'admin'): ?>
-                <!-- Menu for Admin -->
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>admin" class="nav-link">
-                        <i class="nav-icon fas fa-cogs"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>admin/dokter" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Dokter</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>admin/pasien" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Pasien</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>admin/poli" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Poli</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>admin/obat" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Obat</p>
-                    </a>
-                </li>
+                    <!-- Menu for Admin -->
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>admin" class="nav-link">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>admin/dokter" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Dokter</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>admin/pasien" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Pasien</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>admin/poli" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Poli</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url() ?>admin/obat" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Obat</p>
+                        </a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Pasien</a></li>
+                        <li class="breadcrumb-item"><a href="#"><?= $menu ?></a></li>
                         <li class="breadcrumb-item active"><?= $title ?></li>
                     </ol>
                 </div>

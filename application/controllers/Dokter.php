@@ -19,6 +19,7 @@ class Dokter extends CI_Controller
 			redirect('auth/login_dokter');
 		}
 		$data = array(
+			'menu' => 'Dokter',
 			'title' => 'Dashboard',
 			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
 			'isi' => 'dokter/v_dashboard_dokter'
