@@ -10,12 +10,33 @@ class Auth extends CI_Controller
 		$this->load->model('M_auth');
 	}
 
+	private function set_validation_rules($type)
+	{
+		$rules = [
+			'register_pasien' => [
+				['field' => 'nama', 'label' => 'Fullname', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'alamat', 'label' => 'Alamat', 'rules' => 'required|min_length[5]'],
+				['field' => 'no_ktp', 'label' => 'No KTP', 'rules' => 'required|min_length[5]'],
+				['field' => 'no_hp', 'label' => 'No HP', 'rules' => 'required|min_length[5]']
+			],
+			'login_pasien' => [
+				['field' => 'nama', 'label' => 'Fullname', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'alamat', 'label' => 'Alamat', 'rules' => 'required|min_length[5]']
+			],
+			'login_dokter' => [
+				['field' => 'nama', 'label' => 'Fullname', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'alamat', 'label' => 'Alamat', 'rules' => 'required|min_length[5]']
+			]
+		];
+
+		if (isset($rules[$type])) {
+			$this->form_validation->set_rules($rules[$type]);
+		}
+	}
+
 	public function register_pasien()
 	{
-		$this->form_validation->set_rules('nama', 'Fullname', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
-		$this->form_validation->set_rules('no_ktp', 'No KTP', 'required|numeric');
-		$this->form_validation->set_rules('no_hp', 'No HP', 'required|numeric');
+		$this->set_validation_rules('register_pasien');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('pasien/v_register_pasien');
@@ -51,8 +72,7 @@ class Auth extends CI_Controller
 
 	public function login_pasien()
 	{
-		$this->form_validation->set_rules('nama', 'Fullname', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
+		$this->set_validation_rules('login_pasien');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('pasien/v_login_pasien');
@@ -79,8 +99,7 @@ class Auth extends CI_Controller
 
 	public function login_dokter()
 	{
-		$this->form_validation->set_rules('nama', 'Fullname', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
+		$this->set_validation_rules('login_dokter');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('dokter/v_login_dokter');
