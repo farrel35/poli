@@ -12,15 +12,15 @@ class Dokter extends CI_Controller
 
 	public function index()
 	{
-		$id_pasien = $this->session->userdata('id_pasien');
+		$id_dokter = $this->session->userdata('id_dokter');
 
-		if (!$id_pasien) {
-			redirect('auth/login_pasien');
+		if (!$id_dokter) {
+			redirect('auth/login_dokter');
 		}
 		$data = array(
 			'title' => 'Dashboard',
-			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
-			'isi' => 'pasien/v_dashboard_pasien'
+			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
+			'isi' => 'dokter/v_dashboard_dokter'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}

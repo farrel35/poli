@@ -22,7 +22,8 @@ class Auth extends CI_Controller
 			$alamat = $this->input->post('alamat');
 
 			if ($fullname === 'admin' && $alamat === 'admin') {
-				// Set session for admin
+				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
+
 				$this->session->set_userdata([
 					'role' => 'admin',
 				]);
@@ -30,17 +31,19 @@ class Auth extends CI_Controller
 				redirect('admin');
 			}
 
-			$pasien = $this->M_auth->login_dokter($fullname, $alamat);
-			if ($pasien) {
+			$dokter = $this->M_auth->login_dokter($fullname, $alamat);
+			if ($dokter) {
+				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
+
 				$this->session->set_userdata([
-					'id_pasien' => $pasien->id,
-					'role' => 'pasien',
+					'id_dokter' => $dokter->id,
+					'role' => 'dokter',
 				]);
 
-				redirect('pasien');
+				redirect('dokter');
 			} else {
 				$this->session->set_flashdata('error', 'Nama atau Alamat salah.');
-				redirect('auth/login_pasien');
+				redirect('auth/login_dokter');
 			}
 		}
 	}
@@ -58,6 +61,8 @@ class Auth extends CI_Controller
 
 			$pasien = $this->M_auth->login_pasien($fullname, $alamat);
 			if ($pasien) {
+				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
+
 				$this->session->set_userdata([
 					'id_pasien' => $pasien->id,
 					'role' => 'pasien',
