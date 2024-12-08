@@ -9,6 +9,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->model('M_pasien');
+		$this->isLogin();
 	}
 
 	public function index()
@@ -319,5 +320,14 @@ class Admin extends CI_Controller
 		$this->M_admin->delete_pasien($data);
 		$this->session->set_flashdata('success', 'Pasien berhasil dihapus');
 		redirect('admin/pasien');
+	}
+
+	function isLogin()
+	{
+		$role = $this->session->userdata('role');
+
+		if ($role != 'admin') {
+			redirect('auth/login_dokter');
+		}
 	}
 }

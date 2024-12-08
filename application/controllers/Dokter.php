@@ -8,6 +8,7 @@ class Dokter extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_dokter');
+		$this->isLogin();
 	}
 
 	public function index()
@@ -23,5 +24,14 @@ class Dokter extends CI_Controller
 			'isi' => 'dokter/v_dashboard_dokter'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
+
+	function isLogin()
+	{
+		$role = $this->session->userdata('role');
+
+		if ($role != 'dokter') {
+			redirect('auth/login_dokter');
+		}
 	}
 }
