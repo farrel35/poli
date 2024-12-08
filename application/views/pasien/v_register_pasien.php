@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | DataTables</title>
+    <title>Poliklinik | Register Pasien</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -37,15 +37,15 @@
             <div class="card-body">
 
                 <?php if ($this->session->flashdata('error')): ?>
-                <div class="alert alert-danger">
-                    <?= $this->session->flashdata('error') ?>
-                </div>
+                    <div class="alert alert-danger">
+                        <?= $this->session->flashdata('error') ?>
+                    </div>
                 <?php endif; ?>
 
                 <?php if ($this->session->flashdata('success')): ?>
-                <div class="alert alert-success">
-                    <?= $this->session->flashdata('success') ?>
-                </div>
+                    <div class="alert alert-success">
+                        <?= $this->session->flashdata('success') ?>
+                    </div>
                 <?php endif; ?>
 
                 <?= form_open('auth/register_pasien') ?>
