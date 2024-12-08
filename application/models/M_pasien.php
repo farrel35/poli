@@ -22,6 +22,19 @@ class M_pasien extends CI_Model
         return $query->result();
     }
 
+    public function get_riwayat_poli($id_pasien)
+    {
+        $this->db->select('tbl_daftar_poli.id, tbl_daftar_poli.no_antrian, tbl_daftar_poli.keluhan, tbl_jadwal_periksa.hari, tbl_jadwal_periksa.jam_mulai, tbl_jadwal_periksa.jam_selesai, tbl_poli.nama_poli, tbl_dokter.nama AS nama_dokter');
+        $this->db->from('tbl_daftar_poli');
+        $this->db->join('tbl_jadwal_periksa', 'tbl_daftar_poli.id_jadwal = tbl_jadwal_periksa.id', 'left');
+        $this->db->join('tbl_dokter', 'tbl_jadwal_periksa.id_dokter = tbl_dokter.id', 'left');
+        $this->db->join('tbl_poli', 'tbl_dokter.id_poli = tbl_poli.id', 'left');
+        $this->db->where('tbl_daftar_poli.id_pasien', $id_pasien);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     public function get_max_antrian_by_jadwal($id_jadwal)
     {
         $this->db->select_max('no_antrian');

@@ -47,6 +47,7 @@ class Pasien extends CI_Controller
 			'menu' => 'Pasien',
 			'title' => 'Poli',
 			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
+			'riwayat_poli' => $this->M_pasien->get_riwayat_poli($id_pasien),
 			'poli' => $this->M_admin->get_poli(),
 			'isi' => 'pasien/v_poli_pasien'
 		);
@@ -70,6 +71,7 @@ class Pasien extends CI_Controller
 				'menu' => 'Pasien',
 				'title' => 'Poli',
 				'detail_akun' => $this->M_pasien->get_akun($id_pasien),
+				'riwayat_poli' => $this->M_pasien->get_riwayat_poli($id_pasien),
 				'poli' => $this->M_admin->get_poli(),
 				'isi' => 'pasien/v_poli_pasien'
 			);

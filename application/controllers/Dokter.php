@@ -52,6 +52,20 @@ class Dokter extends CI_Controller
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
 
+	public function daftar_periksa()
+	{
+		$id_dokter = $this->session->userdata('id_dokter');
+
+		$data = array(
+			'menu' => 'Dokter',
+			'title' => 'Daftar Periksa',
+			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
+			'daftar_periksa' => $this->M_dokter->get_daftar_periksa_by_dokter($id_dokter),
+			'isi' => 'dokter/v_daftar_periksa_dokter'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
+
 	public function profil()
 	{
 		$id_dokter = $this->session->userdata('id_dokter');

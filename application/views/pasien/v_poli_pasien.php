@@ -80,27 +80,40 @@ document.getElementById('inputPoli').addEventListener('change', function() {
     <div class="card">
         <h5 class="card-header bg-primary">Riwayat daftar poli</h5>
         <div class="card-body">
-            <table class="table table-striped">
+            <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Poli</th>
-                        <th scope="col">Dokter</th>
-                        <th scope="col">Hari</th>
-                        <th scope="col">Mulai</th>
-                        <th scope="col">Selesai</th>
-                        <th scope="col">Antrian</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Aksi</th>
+                        <th>No</th>
+                        <th>Poli</th>
+                        <th>Dokter</th>
+                        <th>Hari</th>
+                        <th>Mulai</th>
+                        <th>Selesai</th>
+                        <th>Antrian</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($riwayat_poli as $index => $value): ?>
                     <tr>
-                        <td colspan="9" align="center">Tidak ada data</td>
+                        <td><?= $index + 1 ?></td>
+                        <td><?= $value->nama_poli ?></td> <!-- Menampilkan Nama Poli -->
+                        <td><?= $value->nama_dokter ?></td> <!-- Menampilkan Nama Dokter -->
+                        <td><?= $value->hari ?></td> <!-- Menampilkan Hari -->
+                        <td><?= $value->jam_mulai ?></td> <!-- Menampilkan Jam Mulai -->
+                        <td><?= $value->jam_selesai ?></td> <!-- Menampilkan Jam Selesai -->
+                        <td><?= $value->no_antrian ?></td> <!-- Menampilkan No Antrian -->
+                        <td>
+                            <!-- Aksi untuk Edit atau Delete -->
+                            <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
+                                class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                            <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
+                                class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
-
         </div>
     </div>
     <!-- End registration poli history -->

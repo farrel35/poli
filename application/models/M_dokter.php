@@ -49,4 +49,16 @@ class M_dokter extends CI_Model
         $this->db->where('id', $data['id']);
         $this->db->delete('tbl_jadwal_periksa', $data);
     }
+
+    public function get_daftar_periksa_by_dokter($id_dokter)
+    {
+        $this->db->select('tbl_daftar_poli.id, tbl_daftar_poli.keluhan, tbl_daftar_poli.no_antrian, tbl_pasien.nama as nama_pasien');
+        $this->db->join('tbl_pasien', 'tbl_pasien.id = tbl_daftar_poli.id_pasien');
+        $this->db->join('tbl_jadwal_periksa', 'tbl_jadwal_periksa.id = tbl_daftar_poli.id_jadwal');
+        $this->db->join('tbl_dokter', 'tbl_dokter.id = tbl_jadwal_periksa.id_dokter');
+        $this->db->join('tbl_poli', 'tbl_poli.id = tbl_dokter.id_poli');
+        $this->db->where('tbl_dokter.id', $id_dokter);
+        $query = $this->db->get('tbl_daftar_poli');
+        return $query->result();
+    }
 }
