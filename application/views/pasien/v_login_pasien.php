@@ -78,7 +78,7 @@
                 <?= form_close() ?>
 
                 <p class="mb-0">
-                    <a href="<?= base_url() ?>pasien/register_pasien" class="text-center">Register a new account</a>
+                    <a href="<?= base_url() ?>auth/register_pasien" class="text-center">Register a new account</a>
                 </p>
             </div>
         </div>

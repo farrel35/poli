@@ -24,9 +24,4 @@ class Dokter extends CI_Controller
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
-
-	public function login()
-	{
-		$this->load->view('dokter/v_login_dokter', FALSE);
-	}
 }

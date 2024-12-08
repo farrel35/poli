@@ -48,7 +48,7 @@
                 </div>
                 <?php endif; ?>
 
-                <?= form_open('pasien/register_pasien') ?>
+                <?= form_open('auth/register_pasien') ?>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="nama" placeholder="Fullname"
                         value="<?= set_value('nama') ?>">
@@ -101,7 +101,7 @@
                 <?= form_close() ?>
 
                 <p class="mb-0">
-                    <a href="<?= base_url() ?>pasien/login" class="text-center">Login account</a>
+                    <a href="<?= base_url() ?>auth/login_pasien" class="text-center">Login account</a>
                 </p>
             </div>
         </div>

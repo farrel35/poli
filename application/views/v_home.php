@@ -12,79 +12,79 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-    body {
-        font-family: 'Source Sans Pro', sans-serif;
-        background-color: #f8f9fa;
-    }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f8f9fa;
+        }
 
-    .navbar {
-        background-color: #025aa5;
-    }
+        .navbar {
+            background-color: #025aa5;
+        }
 
-    .navbar-brand,
-    .nav-link {
-        color: white !important;
-    }
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
 
-    .hero {
-        background-color: #025aa5;
-        color: white;
-        padding: 80px 20px;
-        text-align: center;
-    }
+        .hero {
+            background-color: #025aa5;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
 
-    .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-    }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
 
-    .hero p {
-        font-size: 1.2rem;
-    }
+        .hero p {
+            font-size: 1.2rem;
+        }
 
-    .login-section {
-        padding: 50px 20px;
-    }
+        .login-section {
+            padding: 50px 20px;
+        }
 
-    .login-section h2 {
-        text-align: center;
-        margin-bottom: 40px;
-    }
+        .login-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    .login-option {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        text-align: center;
-        padding: 30px 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-    }
+        .login-option {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
 
-    .login-option i {
-        font-size: 4rem;
-        color: #0275d8;
-        margin-bottom: 15px;
-    }
+        .login-option i {
+            font-size: 4rem;
+            color: #0275d8;
+            margin-bottom: 15px;
+        }
 
-    .login-option h3 {
-        margin-bottom: 10px;
-    }
+        .login-option h3 {
+            margin-bottom: 10px;
+        }
 
-    .login-option a {
-        display: inline-block;
-        margin-top: 15px;
-        font-size: 1rem;
-        color: white;
-        background-color: #0275d8;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-    }
+        .login-option a {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: white;
+            background-color: #0275d8;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .login-option a:hover {
-        background-color: #025aa5;
-    }
+        .login-option a:hover {
+            background-color: #025aa5;
+        }
     </style>
 </head>
 
@@ -118,7 +118,7 @@
                         <h3>Login Dokter</h3>
                         <p>Apabila Anda adalah seorang Dokter, silahkan Login terlebih dahulu untuk memulai melayani
                             Pasien!</p>
-                        <a href="<?= base_url() ?>dokter/login">Masuk Sekarang</a>
+                        <a href="<?= base_url() ?>auth/login_dokter">Masuk Sekarang</a>
                     </div>
                 </div>
             </div>
