@@ -13,7 +13,7 @@
             </div>
             <?php endif; ?>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah dokter
+                Tambah Dokter
             </button>
         </div>
         <!-- /.card-header -->
@@ -59,7 +59,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah dokter</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Dokter</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,6 +101,7 @@
                 <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 <div class="input-group mb-3">
                     <select class="form-control" name="id_poli">
+                        <option value="">Pilih Poli</option>
                         <?php foreach ($poli as $value): ?>
                         <option value="<?= $value->id ?>" <?= set_select('id_poli', $value->id) ?>>
                             <?= $value->nama_poli ?>
