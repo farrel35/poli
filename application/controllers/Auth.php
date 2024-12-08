@@ -41,7 +41,7 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('pasien/v_register_pasien');
 		} else {
-			$fullname = $this->input->post('nama');
+			$nama = $this->input->post('nama');
 			$alamat = $this->input->post('alamat');
 			$no_ktp = $this->input->post('no_ktp');
 			$no_hp = $this->input->post('no_hp');
@@ -57,7 +57,7 @@ class Auth extends CI_Controller
 
 				$data = [
 					'no_rm' => $no_rm,
-					'nama' => $fullname,
+					'nama' => $nama,
 					'alamat' => $alamat,
 					'no_ktp' => $no_ktp,
 					'no_hp' => $no_hp
@@ -77,10 +77,10 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('pasien/v_login_pasien');
 		} else {
-			$fullname = $this->input->post('nama');
+			$nama = $this->input->post('nama');
 			$alamat = $this->input->post('alamat');
 
-			$pasien = $this->M_auth->login_pasien($fullname, $alamat);
+			$pasien = $this->M_auth->login_pasien($nama, $alamat);
 			if ($pasien) {
 				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
 
@@ -104,10 +104,10 @@ class Auth extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('dokter/v_login_dokter');
 		} else {
-			$fullname = $this->input->post('nama');
+			$nama = $this->input->post('nama');
 			$alamat = $this->input->post('alamat');
 
-			if ($fullname === 'admin' && $alamat === 'admin') {
+			if ($nama === 'admin' && $alamat === 'admin') {
 				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
 
 				$this->session->set_userdata([
@@ -117,7 +117,7 @@ class Auth extends CI_Controller
 				redirect('admin');
 			}
 
-			$dokter = $this->M_auth->login_dokter($fullname, $alamat);
+			$dokter = $this->M_auth->login_dokter($nama, $alamat);
 			if ($dokter) {
 				$this->session->unset_userdata(['id_pasien', 'id_dokter', 'role']);
 

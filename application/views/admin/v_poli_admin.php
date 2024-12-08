@@ -67,7 +67,7 @@
                         value="<?= set_value('nama_poli') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-hospital"></span>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         value="<?= set_value('keterangan') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-info"></span>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         value="<?= $value->nama_poli ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-hospital"></span>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         value="<?= $value->keterangan ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-info"></span>
                         </div>
                     </div>
                 </div>

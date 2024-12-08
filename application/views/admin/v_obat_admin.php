@@ -69,7 +69,7 @@
                         value="<?= set_value('nama_obat') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-pills"></span>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                         value="<?= set_value('kemasan') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-box"></span>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         value="<?= set_value('harga') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-money-bill"></span>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         value="<?= $value->nama_obat ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-pills"></span>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         value="<?= $value->kemasan ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-box"></span>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                         value="<?= $value->harga ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-money-bill"></span>
                         </div>
                     </div>
                 </div>

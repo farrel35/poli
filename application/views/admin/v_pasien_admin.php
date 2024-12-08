@@ -84,7 +84,7 @@
                         value="<?= set_value('alamat') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-home"></span>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         value="<?= set_value('no_ktp') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-id-card"></span>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                         value="<?= set_value('no_hp') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-phone"></span>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     <input type="text" class="form-control" name="no_rm" placeholder="No RM" value="<?= $no_rm ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-hashtag"></span>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                         value="<?= $value->alamat ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-home"></span>
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                         value="<?= $value->no_ktp ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-id-card"></span>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                         value="<?= $value->no_hp ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-phone"></span>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                         value="<?= $value->no_rm ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-hashtag"></span>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,6 @@
                 <div class="mb-3">
                     <label for="inputPoli" class="form-label">Pilih Poli</label>
                     <select id="inputPoli" class="form-control">
-                        <option>Open this select menu</option>
                         <option value="1">Poli Umum</option>
                         <option value="4">Poli Gigi</option>
                     </select>

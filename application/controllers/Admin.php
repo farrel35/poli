@@ -57,6 +57,7 @@ class Admin extends CI_Controller
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
+
 	public function obat()
 	{
 		$data = array(
@@ -75,6 +76,7 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
+				'menu' => 'Admin',
 				'title' => 'Poli',
 				'poli' => $this->M_admin->get_poli(),
 				'isi' => 'admin/v_poli_admin'
@@ -134,6 +136,7 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
+				'menu' => 'Admin',
 				'title' => 'Dokter',
 				'dokter' => $this->M_admin->get_dokter(),
 				'poli' => $this->M_admin->get_poli(),
@@ -199,6 +202,7 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
+				'menu' => 'Admin',
 				'title' => 'Obat',
 				'obat' => $this->M_admin->get_obat(),
 				'isi' => 'admin/v_obat_admin'
@@ -263,6 +267,7 @@ class Admin extends CI_Controller
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
+				'menu' => 'Admin',
 				'title' => 'Pasien',
 				'pasien' => $this->M_admin->get_pasien(),
 				'no_rm' => $this->M_pasien->generate_no_rm(),

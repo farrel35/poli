@@ -82,7 +82,7 @@
                         value="<?= set_value('alamat') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-home"></span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                         value="<?= set_value('no_hp') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-phone"></span>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,6 @@
                 <?= form_error('no_hp', '<div class="text-danger">', '</div>') ?>
                 <div class="input-group mb-3">
                     <select class="form-control" name="id_poli">
-                        <option value="">Pilih Poli</option>
                         <?php foreach ($poli as $value): ?>
                         <option value="<?= $value->id ?>" <?= set_select('id_poli', $value->id) ?>>
                             <?= $value->nama_poli ?>
@@ -149,7 +148,7 @@
                         value="<?= $dokters->alamat ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-home"></span>
                         </div>
                     </div>
                 </div>
@@ -160,7 +159,7 @@
                         value="<?= $dokters->no_hp ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                            <span class="fas fa-phone"></span>
                         </div>
                     </div>
                 </div>
