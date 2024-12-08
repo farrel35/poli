@@ -13,6 +13,37 @@ class Admin extends CI_Controller
 		$this->isLogin();
 	}
 
+	private function set_validation_rules($type)
+	{
+		$rules = [
+			'tambah_poli' => [
+				['field' => 'nama_poli', 'label' => 'Nama Poli', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'keterangan', 'label' => 'Keterangan', 'rules' => 'required|min_length[5]']
+			],
+			'tambah_dokter' => [
+				['field' => 'nama', 'label' => 'Nama Dokter', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'alamat', 'label' => 'Alamat', 'rules' => 'required|min_length[5]'],
+				['field' => 'no_hp', 'label' => 'No HP', 'rules' => 'required|min_length[5]'],
+				['field' => 'id_poli', 'label' => 'Poli', 'rules' => 'required']
+			],
+			'tambah_obat' => [
+				['field' => 'nama_obat', 'label' => 'Nama Obat', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'kemasan', 'label' => 'Kemasan', 'rules' => 'required|min_length[5]'],
+				['field' => 'harga', 'label' => 'Harga', 'rules' => 'required']
+			],
+			'tambah_pasien' => [
+				['field' => 'nama', 'label' => 'Nama Pasien', 'rules' => 'required|min_length[3]|max_length[255]'],
+				['field' => 'alamat', 'label' => 'Alamat', 'rules' => 'required|min_length[5]'],
+				['field' => 'no_ktp', 'label' => 'No KTP', 'rules' => 'required|min_length[5]'],
+				['field' => 'no_hp', 'label' => 'No HP', 'rules' => 'required'],
+				['field' => 'no_rm', 'label' => 'No RM', 'rules' => 'required']
+			]
+		];
+
+		if (isset($rules[$type])) {
+			$this->form_validation->set_rules($rules[$type]);
+		}
+	}
 	public function index()
 	{
 		$data = array(
@@ -75,8 +106,7 @@ class Admin extends CI_Controller
 
 	public function tambah_poli()
 	{
-		$this->form_validation->set_rules('nama_poli', 'Nama Poli', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|min_length[5]');
+		$this->set_validation_rules('tambah_poli');
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
@@ -133,10 +163,7 @@ class Admin extends CI_Controller
 
 	public function tambah_dokter()
 	{
-		$this->form_validation->set_rules('nama', 'Nama Dokter', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
-		$this->form_validation->set_rules('no_hp', 'No HP', 'required|min_length[10]|max_length[15]');
-		$this->form_validation->set_rules('id_poli', 'Poli', 'required');
+		$this->set_validation_rules('tambah_dokter');
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
@@ -200,9 +227,7 @@ class Admin extends CI_Controller
 
 	public function tambah_obat()
 	{
-		$this->form_validation->set_rules('nama_obat', 'Nama Obat', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('kemasan', 'Kemasan', 'required|min_length[5]');
-		$this->form_validation->set_rules('harga', 'Harga', 'required');
+		$this->set_validation_rules('tambah_obat');
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
@@ -263,18 +288,14 @@ class Admin extends CI_Controller
 
 	public function tambah_pasien()
 	{
-		$this->form_validation->set_rules('nama', 'Nama Pasien', 'required|min_length[3]|max_length[255]');
-		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[5]');
-		$this->form_validation->set_rules('no_ktp', 'No KTP', 'required');
-		$this->form_validation->set_rules('no_hp', 'No HP', 'required|min_length[5]');
-		$this->form_validation->set_rules('no_rm', 'No RM', 'required');
+		$this->set_validation_rules('tambah_pasien');
 
 		if ($this->form_validation->run() === FALSE) {
 			$data = array(
 				'menu' => 'Admin',
 				'title' => 'Pasien',
 				'pasien' => $this->M_admin->get_pasien(),
-				'no_rm' => $this->M_pasien->generate_no_rm(),
+				'no_rm' => $this->M_auth->generate_no_rm(),
 				'isi' => 'admin/v_pasien_admin'
 			);
 			$this->session->set_flashdata('error', 'Gagal menambah pasien. Pastikan semua kolom terisi dengan benar.');
