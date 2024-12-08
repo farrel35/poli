@@ -18,6 +18,10 @@ class Admin extends CI_Controller
 		$data = array(
 			'menu' => 'Admin',
 			'title' => 'Dashboard',
+			'dokter' => $this->M_admin->get_dokter_count(),
+			'pasien' => $this->M_admin->get_pasien_count(),
+			'poli' => $this->M_admin->get_poli_count(),
+			'obat' => $this->M_admin->get_obat_count(),
 			'isi' => 'admin/v_dashboard_admin'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);

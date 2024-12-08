@@ -4,6 +4,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_admin extends CI_Model
 {
+    public function get_dokter_count()
+    {
+        $this->db->from('tbl_poli');
+        return $this->db->count_all_results();
+    }
+
+    public function get_pasien_count()
+    {
+        $this->db->from('tbl_pasien');
+        return $this->db->count_all_results();
+    }
+    public function get_poli_count()
+    {
+        $this->db->from('tbl_poli');
+        return $this->db->count_all_results();
+    }
+    public function get_obat_count()
+    {
+        $this->db->from('tbl_obat');
+        return $this->db->count_all_results();
+    }
+
     public function get_poli()
     {
         $this->db->select('*');
