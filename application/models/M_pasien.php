@@ -25,17 +25,40 @@ class M_pasien extends CI_Model
 
     public function get_riwayat_poli($id_pasien)
     {
-        $this->db->select('tbl_daftar_poli.id, tbl_daftar_poli.no_antrian, tbl_daftar_poli.keluhan, tbl_jadwal_periksa.hari, tbl_jadwal_periksa.jam_mulai, tbl_jadwal_periksa.jam_selesai, tbl_poli.nama_poli, tbl_dokter.nama AS nama_dokter');
+        $this->db->select('
+            tbl_daftar_poli.id, 
+            tbl_daftar_poli.no_antrian, 
+            tbl_daftar_poli.keluhan, 
+            tbl_jadwal_periksa.hari, 
+            tbl_jadwal_periksa.jam_mulai, 
+            tbl_jadwal_periksa.jam_selesai, 
+            tbl_poli.nama_poli, 
+            tbl_dokter.nama AS nama_dokter,
+            tbl_periksa.id AS periksa_id,
+            tbl_periksa.tgl_periksa,
+            tbl_periksa.catatan,
+            tbl_periksa.biaya_periksa
+        ');
         $this->db->from('tbl_daftar_poli');
         $this->db->join('tbl_jadwal_periksa', 'tbl_daftar_poli.id_jadwal = tbl_jadwal_periksa.id', 'left');
         $this->db->join('tbl_dokter', 'tbl_jadwal_periksa.id_dokter = tbl_dokter.id', 'left');
         $this->db->join('tbl_poli', 'tbl_dokter.id_poli = tbl_poli.id', 'left');
+        $this->db->join('tbl_periksa', 'tbl_daftar_poli.id = tbl_periksa.id_daftar_poli', 'left'); // Join tbl_periksa
         $this->db->where('tbl_daftar_poli.id_pasien', $id_pasien);
         $query = $this->db->get();
 
         return $query->result();
     }
 
+    public function get_periksa_by_daftar_poli($id_daftar_poli)
+    {
+        $this->db->select('id');
+        $this->db->from('tbl_periksa');
+        $this->db->where('id_daftar_poli', $id_daftar_poli);
+        $query = $this->db->get();
+
+        return $query->row();
+    }
     public function get_max_antrian_by_jadwal($id_jadwal)
     {
         $this->db->select_max('no_antrian');

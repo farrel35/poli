@@ -104,6 +104,7 @@
                         <th>Mulai</th>
                         <th>Selesai</th>
                         <th>Antrian</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -118,11 +119,18 @@
                             <td><?= $value->jam_selesai ?></td> <!-- Menampilkan Jam Selesai -->
                             <td><?= $value->no_antrian ?></td> <!-- Menampilkan No Antrian -->
                             <td>
-                                <!-- Aksi untuk Edit atau Delete -->
-                                <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
-                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                                <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
-                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                <?php if ($value->periksa_exists): ?>
+                                    <span class="badge badge-success">Sudah Diperiksa</span><br>
+                                    <span class="badge bg-default"><i><?= $value->tgl_periksa ?></i></span>
+                                <?php else: ?>
+                                    <span class="badge badge-warning">Belum Diperiksa</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($value->periksa_exists): ?>
+                                    <button data-toggle="modal" data-target="#detail_periksa<?= $value->id ?>"
+                                        class="btn btn-warning btn-sm"><i class="fas fa-info"></i></button>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -132,3 +140,66 @@
     </div>
     <!-- End registration poli history -->
 </div>
+
+<?php foreach ($riwayat_poli as $key => $value): ?>
+    <div class="modal fade" id="detail_periksa<?= $value->id ?>" tabindex="-1" role="dialog"
+        aria-labelledby="detail_periksaLabel<?= $value->id ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="detail_periksaLabel<?= $value->id ?>">Periksa pasien
+                        <?= $value->nama_pasien ?>
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h3 class="card-title">Riwayat Periksa</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <th>Nama Poli</th>
+                                        <td>Poli Umum</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nama Dokter</th>
+                                        <td>Adi</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <td>Selasa</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mulai</th>
+                                        <td>07:00:00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Selesai</th>
+                                        <td>09:00:00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Nomor Antrian</th>
+                                        <td><button class="btn btn-success">3</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br><br>
+                            <div class="card-body bg-light"><i>Tgl Periksa: 2024-12-08 20:18:00</i><br>Catatan:
+                                fsa<br>Daftar Obat Diresepkan: <br>
+                                <ol>
+                                    <li>ACT (Artesunate tablet 50 mg + Amodiaquine anhydrida tablet 200 mg)</li>
+                                </ol>
+                                <h2><span class="bg-danger text-white p-1"> Biaya Periksa: 194000</span></h2><br><br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>

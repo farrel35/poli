@@ -43,11 +43,18 @@ class Pasien extends CI_Controller
 	{
 		$id_pasien = $this->session->userdata('id_pasien');
 
+		$riwayat_poli = $this->M_pasien->get_riwayat_poli($id_pasien);
+
+		foreach ($riwayat_poli as &$item) {
+			$item->periksa_exists = $this->M_pasien->get_periksa_by_daftar_poli($item->id);
+		}
+		var_dump($riwayat_poli);
+		exit;
 		$data = array(
 			'menu' => 'Pasien',
 			'title' => 'Poli',
 			'detail_akun' => $this->M_pasien->get_akun($id_pasien),
-			'riwayat_poli' => $this->M_pasien->get_riwayat_poli($id_pasien),
+			'riwayat_poli' => $riwayat_poli,
 			'poli' => $this->M_admin->get_poli(),
 			'isi' => 'pasien/v_poli_pasien'
 		);
