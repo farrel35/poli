@@ -71,7 +71,7 @@
 </div>
 <!-- Modal for Add Pasien -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah pasien</h5>
@@ -130,7 +130,7 @@
 <!-- Modal for Edit Pasien -->
 <?php foreach ($pasien as $key => $value) { ?>
     <div class="modal fade" id="edit<?= $value->id ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit pasien <?= $value->nama ?></h4>
@@ -190,7 +190,7 @@
 <!-- Modal for Delete Pasien -->
 <?php foreach ($pasien as $key => $value) { ?>
     <div class="modal fade" id="delete<?= $value->id ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Hapus pasien <?= $value->nama ?></h4>

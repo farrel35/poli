@@ -65,7 +65,7 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Poli</h5>
@@ -102,7 +102,7 @@
 
 <?php foreach ($poli as $key => $value) { ?>
     <div class="modal fade" id="edit<?= $value->id ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit <?= $value->nama_poli ?></h4>
@@ -136,14 +136,14 @@
             </div>
             <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-dialog modal-lg -->
     </div>
     <!-- /.modal -->
 <?php } ?>
 
 <?php foreach ($poli as $key => $value) { ?>
     <div class="modal fade" id="delete<?= $value->id ?>">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Hapus <?= $value->nama_poli ?></h4>
@@ -162,7 +162,7 @@
             </div>
             <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-dialog modal-lg -->
     </div>
     <!-- /.modal -->
 <?php } ?>

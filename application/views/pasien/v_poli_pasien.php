@@ -144,7 +144,7 @@
 <?php foreach ($riwayat_poli as $key => $value): ?>
     <div class="modal fade" id="detail_periksa<?= $value->id ?>" tabindex="-1" role="dialog"
         aria-labelledby="detail_periksaLabel<?= $value->id ?>" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="detail_periksaLabel<?= $value->id ?>">Detail Periksa
