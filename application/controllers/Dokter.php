@@ -8,6 +8,7 @@ class Dokter extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('M_dokter');
+		$this->load->model('M_admin');
 		$this->isLogin();
 	}
 
@@ -56,11 +57,19 @@ class Dokter extends CI_Controller
 	{
 		$id_dokter = $this->session->userdata('id_dokter');
 
+		$daftar_periksa = $this->M_dokter->get_daftar_poli_by_dokter($id_dokter);
+
+
+		foreach ($daftar_periksa as &$item) {
+			$item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+		}
+
 		$data = array(
 			'menu' => 'Dokter',
 			'title' => 'Daftar Periksa',
 			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
-			'daftar_periksa' => $this->M_dokter->get_daftar_periksa_by_dokter($id_dokter),
+			'daftar_periksa' => $daftar_periksa,
+			'obat' => $this->M_admin->get_obat(),
 			'isi' => 'dokter/v_daftar_periksa_dokter'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
@@ -154,6 +163,58 @@ class Dokter extends CI_Controller
 		$this->M_dokter->delete_jadwal_periksa($data);
 		$this->session->set_flashdata('success', 'Jadwal berhasil dihapus');
 		redirect('dokter/jadwal_periksa');
+	}
+
+	public function submit_periksa($id = NULL)
+	{
+		$this->form_validation->set_rules('tgl_periksa', 'Tanggal Periksa', 'required');
+		$this->form_validation->set_rules('catatan', 'Catatan', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$id_dokter = $this->session->userdata('id_dokter');
+
+			$daftar_periksa = $this->M_dokter->get_daftar_poli_by_dokter($id_dokter);
+
+			foreach ($daftar_periksa as &$item) {
+				$item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+			}
+
+			$data = array(
+				'menu' => 'Dokter',
+				'title' => 'Daftar Periksa',
+				'detail_akun' => $this->M_dokter->get_akun($id_dokter),
+				'daftar_periksa' => $daftar_periksa,
+				'obat' => $this->M_admin->get_obat(),
+				'isi' => 'dokter/v_daftar_periksa_dokter'
+			);
+
+			$this->session->set_flashdata('error', 'Gagal memeriksa. Pastikan semua kolom terisi dengan benar.');
+
+			$this->load->view('layout/v_wrapper', $data, FALSE);
+		} else {
+			$data_periksa = array(
+				'id_daftar_poli' => $id,
+				'tgl_periksa' => $this->input->post('tgl_periksa'),
+				'catatan' => $this->input->post('catatan'),
+				'biaya_periksa' => $this->input->post('biaya_periksa')
+			);
+
+			$this->db->insert('tbl_periksa', $data_periksa);
+			$id_periksa = $this->db->insert_id();
+
+			$obat_ids = $this->input->post('obat');
+			foreach ($obat_ids as $id_obat) {
+				$data_detail_periksa = array(
+					'id_periksa' => $id_periksa,
+					'id_obat' => $id_obat
+				);
+				$this->db->insert('tbl_detail_periksa', $data_detail_periksa);
+			}
+
+			$this->session->set_flashdata('success', 'Periksa berhasil.');
+
+			redirect('dokter/daftar_periksa');
+		}
 	}
 
 	function isLogin()
