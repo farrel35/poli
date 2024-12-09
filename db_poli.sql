@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_pasien: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_pasien: ~1 rows (approximately)
 INSERT INTO `tbl_pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
-	(1, 'Farrel Ardian', 'Semarang', '12345', '4294967295', '202412-1');
+	(1, 'Farrel Ardian', 'Semarang', '12345', '4294967295', '202412-001');
 
 -- Dumping structure for table db_poli.tbl_periksa
 CREATE TABLE IF NOT EXISTS `tbl_periksa` (

@@ -34,6 +34,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Pasien</th>
+                        <th>No RM</th>
                         <th>Keluhan</th>
                         <th>Aksi</th>
                     </tr>
@@ -43,6 +44,7 @@
                         <tr>
                             <td><?= $index + 1 ?></td>
                             <td><?= $value->nama_pasien ?></td>
+                            <td><?= $value->no_rm ?></td>
                             <td><?= $value->keluhan ?></td>
                             <td>
                                 <!-- Show "Edit" button if a record exists in tbl_periksa -->

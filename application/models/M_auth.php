@@ -10,7 +10,7 @@ class M_auth extends CI_Model
         $this->db->like('no_rm', $year_month, 'after');
         $this->db->from('tbl_pasien');
         $count = $this->db->count_all_results();
-        $no_rm = $year_month . '-' . ($count + 1);
+        $no_rm = $year_month . '-' . str_pad(($count + 1), 3, '0', STR_PAD_LEFT);
 
         return $no_rm;
     }
