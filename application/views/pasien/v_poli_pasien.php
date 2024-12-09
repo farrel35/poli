@@ -212,4 +212,5 @@
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>
