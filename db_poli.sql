@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `tbl_daftar_poli` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_pasien` int NOT NULL,
   `id_jadwal` int NOT NULL,
-  `keluhan` int NOT NULL,
+  `keluhan` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `no_antrian` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tbl_daftar_poli_tbl_pasien` (`id_pasien`),
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `tbl_dokter` (
   CONSTRAINT `FK_tbl_dokter_tbl_poli` FOREIGN KEY (`id_poli`) REFERENCES `tbl_poli` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_dokter: ~1 rows (approximately)
+-- Dumping data for table db_poli.tbl_dokter: ~0 rows (approximately)
 INSERT INTO `tbl_dokter` (`id`, `nama`, `alamat`, `no_hp`, `id_poli`) VALUES
 	(1, 'Santoso', 'Semarang', 4294967295, 1);
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `tbl_jadwal_periksa` (
   CONSTRAINT `FK_tbl_jadwal_periksa_tbl_dokter` FOREIGN KEY (`id_dokter`) REFERENCES `tbl_dokter` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_jadwal_periksa: ~1 rows (approximately)
+-- Dumping data for table db_poli.tbl_jadwal_periksa: ~0 rows (approximately)
 INSERT INTO `tbl_jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_selesai`, `isActive`) VALUES
 	(1, 1, 'Senin', '08:00:00', '10:00:00', 1);
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `tbl_obat` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_obat: ~0 rows (approximately)
+-- Dumping data for table db_poli.tbl_obat: ~3 rows (approximately)
 INSERT INTO `tbl_obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
 	(1, 'ACT(Artesunate tablet 50 mg + Amodiaquine anhydrid', '2 blister @ 12 tablet / kotak', 44000),
 	(2, 'Albendasol suspensi 200 mg/5 ml', 'Ktk 10 btl @ 10 ml', 6000),
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_poli.tbl_pasien: ~1 rows (approximately)
+-- Dumping data for table db_poli.tbl_pasien: ~0 rows (approximately)
 INSERT INTO `tbl_pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
 	(1, 'Farrel Ardian', 'Semarang', '12345', '4294967295', '202412-1');
 
