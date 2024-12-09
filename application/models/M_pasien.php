@@ -18,6 +18,7 @@ class M_pasien extends CI_Model
         $this->db->select('tbl_jadwal_periksa.id, tbl_jadwal_periksa.hari, tbl_jadwal_periksa.jam_mulai, tbl_jadwal_periksa.jam_selesai, tbl_dokter.nama');
         $this->db->join('tbl_dokter', 'tbl_dokter.id = tbl_jadwal_periksa.id_dokter');
         $this->db->where('tbl_dokter.id_poli', $id_poli);
+        $this->db->where('tbl_jadwal_periksa.isActive', 1);
         $query = $this->db->get('tbl_jadwal_periksa');
         return $query->result();
     }
