@@ -116,7 +116,7 @@ INSERT INTO `tbl_pasien` (`id`, `nama`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VA
 CREATE TABLE IF NOT EXISTS `tbl_periksa` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_daftar_poli` int NOT NULL,
-  `tgl_periksa` date NOT NULL,
+  `tgl_periksa` datetime NOT NULL,
   `catatan` text NOT NULL,
   `biaya_periksa` int DEFAULT NULL,
   PRIMARY KEY (`id`),
