@@ -48,8 +48,8 @@ class Pasien extends CI_Controller
 		foreach ($riwayat_poli as &$item) {
 			$item->periksa_exists = $this->M_pasien->get_periksa_by_daftar_poli($item->id);
 		}
-		var_dump($riwayat_poli);
-		exit;
+		// var_dump($riwayat_poli);
+		// exit;
 		$data = array(
 			'menu' => 'Pasien',
 			'title' => 'Poli',

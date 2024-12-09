@@ -50,6 +50,28 @@ class M_pasien extends CI_Model
         return $query->result();
     }
 
+    public function get_detail_periksa($id_periksa)
+    {
+        $this->db->select('
+            tbl_periksa.id AS periksa_id,
+            tbl_periksa.tgl_periksa,
+            tbl_periksa.catatan,
+            tbl_periksa.biaya_periksa,
+            tbl_detail_periksa.id AS detail_periksa_id,
+            tbl_detail_periksa.id_obat,
+            tbl_obat.nama_obat AS nama_obat,
+            tbl_obat.harga AS harga_obat
+        ');
+        $this->db->from('tbl_detail_periksa');
+        $this->db->join('tbl_periksa', 'tbl_periksa.id = tbl_detail_periksa.id_periksa', 'left');
+        $this->db->join('tbl_obat', 'tbl_detail_periksa.id_obat = tbl_obat.id', 'left');
+        $this->db->where('tbl_detail_periksa.id_periksa', $id_periksa);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
     public function get_periksa_by_daftar_poli($id_daftar_poli)
     {
         $this->db->select('id');

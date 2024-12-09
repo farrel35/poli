@@ -147,58 +147,68 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="detail_periksaLabel<?= $value->id ?>">Periksa pasien
-                        <?= $value->nama_pasien ?>
+                    <h4 class="modal-title" id="detail_periksaLabel<?= $value->id ?>">Detail Periksa
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="card">
-                        <div class="card-header bg-primary">
-                            <h3 class="card-title">Riwayat Periksa</h3>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <tbody>
-                                    <tr>
-                                        <th>Nama Poli</th>
-                                        <td>Poli Umum</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nama Dokter</th>
-                                        <td>Adi</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Hari</th>
-                                        <td>Selasa</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Mulai</th>
-                                        <td>07:00:00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Selesai</th>
-                                        <td>09:00:00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Nomor Antrian</th>
-                                        <td><button class="btn btn-success">3</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br><br>
-                            <div class="card-body bg-light"><i>Tgl Periksa: 2024-12-08 20:18:00</i><br>Catatan:
-                                fsa<br>Daftar Obat Diresepkan: <br>
-                                <ol>
-                                    <li>ACT (Artesunate tablet 50 mg + Amodiaquine anhydrida tablet 200 mg)</li>
-                                </ol>
-                                <h2><span class="bg-danger text-white p-1"> Biaya Periksa: 194000</span></h2><br><br>
-                            </div>
-                        </div>
-                    </div>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Nama Poli</th>
+                                <td><?= $value->nama_poli ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nama Dokter</th>
+                                <td><?= $value->nama_dokter ?></td>
 
+                            </tr>
+                            <tr>
+                                <th>Hari</th>
+                                <td><?= $value->hari ?></td>
+                            </tr>
+                            <tr>
+                                <th>Mulai</th>
+                                <td><?= $value->jam_mulai ?></td>
+                            </tr>
+                            <tr>
+                                <th>Selesai</th>
+                                <td><?= $value->jam_selesai ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nomor Antrian</th>
+                                <td><?= $value->no_antrian ?></td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Periksa</th>
+                                <td><i><?= $value->tgl_periksa ?></i></td>
+                            </tr>
+                            <tr>
+                                <th>Catatan</th>
+                                <td><?= $value->catatan ?></td>
+                            </tr>
+                            <tr>
+                                <th>Daftar Obat Diresepkan</th>
+                                <td colspan="2">
+                                    <ul>
+                                        <?php
+                                        // Fetch the prescribed medications based on the periksa ID
+                                        $detail_periksa = $this->M_pasien->get_detail_periksa($value->periksa_exists->id);
+                                        ?>
+                                        <?php foreach ($detail_periksa as $detail): ?>
+                                            <li><?= $detail->nama_obat ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Biaya Periksa</th>
+                                <td>Rp <?= $value->biaya_periksa ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
