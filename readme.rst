@@ -40,7 +40,7 @@ Installation
 ************
 
 1. Unzip file
-2. Copy/cut paste to "C:\laragon\www\poli"
+2. Copy/cut paste to "C:/laragon/www/poli"
 3. import database mysql "db_poli.sql"
 4. Open "http://localhost/poli/"
 
