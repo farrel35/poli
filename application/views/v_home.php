@@ -26,6 +26,16 @@
             color: white !important;
         }
 
+        .dashboard {
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .dashboard:hover {
+            color: rgb(204, 204, 204) !important;
+            text-decoration: none;
+        }
+
         .hero {
             background-color: #025aa5;
             color: white;
@@ -92,6 +102,15 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#">Poliklinik</a>
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <?php if ($this->session->userdata('role') == 'pasien'): ?>
+                    <a class="dashboard" href="<?= base_url() ?>pasien">Dashboard</a>
+                <?php elseif ($this->session->userdata('role') == 'dokter'): ?>
+                    <a class="dashboard" href="<?= base_url() ?>dokter">Dashboard</a>
+                <?php elseif ($this->session->userdata('role') == 'admin'): ?>
+                    <a class="dashboard" href="<?= base_url() ?>admin">Dashboard</a>
+                <?php endif; ?>
+            </ul>
         </div>
     </nav>
 
