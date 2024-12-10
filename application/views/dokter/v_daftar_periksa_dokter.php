@@ -49,11 +49,11 @@
                                 <!-- Show "Edit" button if a record exists in tbl_periksa -->
                                 <?php if ($value->id_periksa): ?>
                                     <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
-                                        class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                        class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
                                 <?php else: ?>
                                     <!-- Show "Memeriksa" button if no record exists in tbl_periksa -->
                                     <button data-toggle="modal" data-target="#memeriksa<?= $value->id ?>"
-                                        class="btn btn-success btn-sm"><i class="fas fa-check"></i> Memeriksa</button>
+                                        class="btn btn-success btn-sm"><i class="fas fa-stethoscope"></i> Memeriksa</button>
                                 <?php endif; ?>
                             </td>
                         </tr>

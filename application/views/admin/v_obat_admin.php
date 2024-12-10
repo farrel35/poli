@@ -52,9 +52,9 @@
                             <td>
                                 <!-- Action buttons (Edit, Delete) -->
                                 <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
-                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
                                 <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
-                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Delete</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -65,6 +65,7 @@
     </div>
     <!-- /.card -->
 </div>
+
 <!-- Modal for Add Obat -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

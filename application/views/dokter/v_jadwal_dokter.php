@@ -63,7 +63,7 @@
                             <td>
                                 <!-- Action buttons (Edit, Delete) -->
                                 <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
-                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                    class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
                                 <!-- <button data-toggle="modal" data-target="#delete<?= $value->id ?>"
                                     class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button> -->
                             </td>

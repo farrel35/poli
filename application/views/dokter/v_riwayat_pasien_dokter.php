@@ -54,7 +54,7 @@
                             <td>
                                 <!-- Action buttons (Edit, Delete) -->
                                 <button data-toggle="modal" data-target="#riwayat<?= $value->id ?>"
-                                    class="btn btn-warning btn-sm"><i class="fas fa-info"></i></button>
+                                    class="btn btn-warning btn-sm"><i class="fas fa-info"></i> Info</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -72,7 +72,8 @@
     $riwayat_pasien = $this->M_dokter->get_riwayat_pasien($value->id);
 
     foreach ($riwayat_pasien as &$item) {
-        $item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+        $item->id_periksa = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+        $item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id) ? true : false;
     } ?>
 
     <div class="modal fade" id="riwayat<?= $value->id ?>">
@@ -101,7 +102,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($riwayat_pasien as $key => $value): ?>
-                                    <?php if ($value->periksa_exists): ?>
+                                    <?php if ($value->id_periksa): ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $value->nama_poli ?></td> <!-- Menampilkan Nama Poli -->
@@ -111,7 +112,7 @@
                                             <td><?= $value->catatan ?></td> <!-- Menampilkan Jam Mulai -->
                                             <td><?php
                                                 // Fetch the prescribed medications based on the periksa ID
-                                                $detail_periksa = $this->M_dokter->get_detail_periksa($value->periksa_exists->id);
+                                                $detail_periksa = $this->M_dokter->get_detail_periksa($value->id_periksa);
                                                 ?>
                                                 <?php foreach ($detail_periksa as $detail): ?>
                                                     <li><?= $detail->nama_obat ?></li>

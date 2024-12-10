@@ -129,7 +129,7 @@
                             <td>
                                 <?php if ($value->id_periksa): ?>
                                     <button data-toggle="modal" data-target="#detail_periksa<?= $value->id ?>"
-                                        class="btn btn-warning btn-sm"><i class="fas fa-info"></i></button>
+                                        class="btn btn-warning btn-sm"><i class="fas fa-info"></i> Info</button>
                                 <?php endif; ?>
                             </td>
                         </tr>
