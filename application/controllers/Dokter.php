@@ -199,17 +199,9 @@ class Dokter extends CI_Controller
 				'biaya_periksa' => $this->input->post('biaya_periksa')
 			);
 
-			$this->db->insert('tbl_periksa', $data_periksa);
-			$id_periksa = $this->db->insert_id();
-
 			$obat_ids = $this->input->post('obat');
-			foreach ($obat_ids as $id_obat) {
-				$data_detail_periksa = array(
-					'id_periksa' => $id_periksa,
-					'id_obat' => $id_obat
-				);
-				$this->db->insert('tbl_detail_periksa', $data_detail_periksa);
-			}
+
+			$this->M_dokter->insert_periksa($data_periksa, $obat_ids);
 
 			$this->session->set_flashdata('success', 'Periksa berhasil.');
 
