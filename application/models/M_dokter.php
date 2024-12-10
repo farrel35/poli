@@ -86,6 +86,24 @@ class M_dokter extends CI_Model
         }
     }
 
+    public function edit_periksa($data_periksa, $obat_ids)
+    {
+        $this->db->where('id', $data_periksa['id']);
+        $this->db->update('tbl_periksa', $data_periksa);
+        $id_periksa = $data_periksa['id'];
+
+        $this->db->where('id_periksa', $data_periksa['id']);
+        $this->db->delete('tbl_detail_periksa');
+
+        foreach ($obat_ids as $id_obat) {
+            $data_detail_periksa = array(
+                'id_periksa' => $id_periksa,
+                'id_obat' => $id_obat
+            );
+            $this->db->insert('tbl_detail_periksa', $data_detail_periksa);
+        }
+    }
+
     public function get_detail_periksa($id_periksa)
     {
         $this->db->select('
