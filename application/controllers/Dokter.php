@@ -26,6 +26,7 @@ class Dokter extends CI_Controller
 			$this->form_validation->set_rules($rules[$type]);
 		}
 	}
+
 	public function index()
 	{
 		$id_dokter = $this->session->userdata('id_dokter');
@@ -71,6 +72,20 @@ class Dokter extends CI_Controller
 			'daftar_periksa' => $daftar_periksa,
 			'obat' => $this->M_admin->get_obat(),
 			'isi' => 'dokter/v_daftar_periksa_dokter'
+		);
+		$this->load->view('layout/v_wrapper', $data, FALSE);
+	}
+
+	public function riwayat_pasien()
+	{
+		$id_dokter = $this->session->userdata('id_dokter');
+
+		$data = array(
+			'menu' => 'Dokter',
+			'title' => 'Riwayat Pasien',
+			'detail_akun' => $this->M_dokter->get_akun($id_dokter),
+			'pasien' => $this->M_admin->get_pasien(),
+			'isi' => 'dokter/v_riwayat_pasien_dokter'
 		);
 		$this->load->view('layout/v_wrapper', $data, FALSE);
 	}
@@ -251,6 +266,7 @@ class Dokter extends CI_Controller
 			redirect('dokter/daftar_periksa');
 		}
 	}
+
 	function isLogin()
 	{
 		$role = $this->session->userdata('role');

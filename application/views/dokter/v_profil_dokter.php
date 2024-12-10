@@ -1,7 +1,6 @@
 <div class="col-12">
-    <!-- general form elements -->
     <div class="card card-primary">
-        <div class="card-header">
+        <h5 class="card-header">
             <?php if ($this->session->flashdata('error')): ?>
                 <script>
                     $(document).ready(function() {
@@ -27,8 +26,8 @@
                     });
                 </script>
             <?php endif; ?>
-            <h3 class="card-title">Edit Profil</h3>
-        </div>
+            Edit Profil
+        </h5>
         <!-- /.card-header -->
         <!-- form start -->
         <div class="card-body">

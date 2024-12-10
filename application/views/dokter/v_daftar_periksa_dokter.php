@@ -1,7 +1,6 @@
 <div class="col-12">
-    <!-- Registration poli history -->
-    <div class="card">
-        <h5 class="card-header bg-primary">
+    <div class="card card-primary">
+        <h5 class="card-header">
             <?php if ($this->session->flashdata('error')): ?>
                 <script>
                     $(document).ready(function() {
