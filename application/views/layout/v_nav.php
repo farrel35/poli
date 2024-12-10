@@ -62,13 +62,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                        <a href="<?= base_url() ?>dokter/daftar_periksa" class="nav-link">
                             <i class="nav-icon fas fa-stethoscope"></i>
                             <p>Memeriksa Pasien</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() ?>pasien/poli" class="nav-link">
+                        <a href="<?= base_url() ?>dokter/riwayat_pasien" class="nav-link">
                             <i class="nav-icon fas fa-notes-medical"></i>
                             <p>Riwayat Pasien</p>
                         </a>
