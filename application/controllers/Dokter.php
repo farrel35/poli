@@ -60,10 +60,13 @@ class Dokter extends CI_Controller
 
 		$daftar_periksa = $this->M_dokter->get_daftar_poli_by_dokter($id_dokter);
 
-
 		foreach ($daftar_periksa as &$item) {
-			$item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+			$item->id_periksa = $this->M_dokter->get_periksa_by_daftar_poli($item->id);
+			$item->periksa_exists = $this->M_dokter->get_periksa_by_daftar_poli($item->id) ? true : false;
 		}
+		usort($daftar_periksa, function ($a, $b) {
+			return $a->periksa_exists <=> $b->periksa_exists;
+		});
 
 		$data = array(
 			'menu' => 'Dokter',

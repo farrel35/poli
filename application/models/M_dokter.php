@@ -97,8 +97,12 @@ class M_dokter extends CI_Model
         $this->db->where('id_daftar_poli', $id_daftar_poli);
         $query = $this->db->get();
 
-        return $query->row();
+        // Check if the result exists, and return only the id, or null if not found
+        $result = $query->row();
+        return $result ? $result->id : null; // Return only the id or null if not found
     }
+
+
     public function insert_periksa($data_periksa, $obat_ids)
     {
         $this->db->insert('tbl_periksa', $data_periksa);

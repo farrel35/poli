@@ -46,10 +46,15 @@ class Pasien extends CI_Controller
 		$riwayat_poli = $this->M_pasien->get_riwayat_poli($id_pasien);
 
 		foreach ($riwayat_poli as &$item) {
-			$item->periksa_exists = $this->M_pasien->get_periksa_by_daftar_poli($item->id);
+			$item->id_periksa = $this->M_pasien->get_periksa_by_daftar_poli($item->id);
+			$item->periksa_exists = $this->M_pasien->get_periksa_by_daftar_poli($item->id) ? true : false;
 		}
+		usort($riwayat_poli, function ($a, $b) {
+			return $b->periksa_exists <=> $a->periksa_exists;
+		});
+		// echo '<pre>';
 		// var_dump($riwayat_poli);
-		// exit;
+		// echo '</pre>';
 		$data = array(
 			'menu' => 'Pasien',
 			'title' => 'Poli',

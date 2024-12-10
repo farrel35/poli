@@ -119,7 +119,7 @@
                             <td><?= $value->jam_selesai ?></td> <!-- Menampilkan Jam Selesai -->
                             <td><?= $value->no_antrian ?></td> <!-- Menampilkan No Antrian -->
                             <td>
-                                <?php if ($value->periksa_exists): ?>
+                                <?php if ($value->id_periksa): ?>
                                     <span class="badge badge-success">Sudah Diperiksa</span><br>
                                     <span class="badge bg-default"><i><?= $value->tgl_periksa ?></i></span>
                                 <?php else: ?>
@@ -127,7 +127,7 @@
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <?php if ($value->periksa_exists): ?>
+                                <?php if ($value->id_periksa): ?>
                                     <button data-toggle="modal" data-target="#detail_periksa<?= $value->id ?>"
                                         class="btn btn-warning btn-sm"><i class="fas fa-info"></i></button>
                                 <?php endif; ?>
@@ -195,7 +195,7 @@
                                     <ul>
                                         <?php
                                         // Fetch the prescribed medications based on the periksa ID
-                                        $detail_periksa = $this->M_pasien->get_detail_periksa($value->periksa_exists->id);
+                                        $detail_periksa = $this->M_pasien->get_detail_periksa($value->id_periksa);
                                         ?>
                                         <?php foreach ($detail_periksa as $detail): ?>
                                             <li><?= $detail->nama_obat ?></li>

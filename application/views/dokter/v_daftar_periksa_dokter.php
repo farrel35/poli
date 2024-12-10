@@ -47,7 +47,7 @@
                             <td><?= $value->keluhan ?></td>
                             <td>
                                 <!-- Show "Edit" button if a record exists in tbl_periksa -->
-                                <?php if ($value->periksa_exists): ?>
+                                <?php if ($value->id_periksa): ?>
                                     <button data-toggle="modal" data-target="#edit<?= $value->id ?>"
                                         class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
                                 <?php else: ?>
@@ -66,7 +66,7 @@
 </div>
 
 <?php foreach ($daftar_periksa as $key => $value): ?>
-    <?php if (!$value->periksa_exists): ?>
+    <?php if (!$value->id_periksa): ?>
         <div class="modal fade" id="memeriksa<?= $value->id ?>" tabindex="-1" role="dialog"
             aria-labelledby="memeriksaLabel<?= $value->id ?>" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -131,7 +131,7 @@
     <?php endif; ?>
 <?php endforeach; ?>
 <?php foreach ($daftar_periksa as $key => $value): ?>
-    <?php if ($value->periksa_exists): ?>
+    <?php if ($value->id_periksa): ?>
         <div class="modal fade" id="edit<?= $value->id ?>" tabindex="-1" role="dialog"
             aria-labelledby="editLabel<?= $value->id ?>" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -143,7 +143,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <?= form_open('dokter/edit_periksa/' . $value->periksa_exists->id); ?>
+                        <?= form_open('dokter/edit_periksa/' . $value->id_periksa); ?>
 
                         <!-- Tanggal Periksa -->
                         <div class="form-group">
@@ -164,7 +164,7 @@
                         <!-- Obat (Prescribed medications list) -->
                         <?php
                         // Fetch the prescribed medications based on the periksa ID
-                        $detail_periksa = $this->M_dokter->get_detail_periksa($value->periksa_exists->id);
+                        $detail_periksa = $this->M_dokter->get_detail_periksa($value->id_periksa);
                         ?>
                         <div class="form-group">
                             <label for="obat">Obat</label>
