@@ -40,6 +40,15 @@
             "autoWidth": false,
             "responsive": true,
         });
+        $('#table-search').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
 </script>
 <script>
