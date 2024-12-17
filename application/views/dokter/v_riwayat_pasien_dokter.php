@@ -87,7 +87,7 @@
                 </div>
                 <div class="modal-body">
                     <?php if (!empty($riwayat_pasien)): ?>
-                        <table id="example3" class="table table-bordered table-hover table-responsive-lg">
+                        <table id="table-riwayat<?= $value->id ?>" class="table table-bordered table-hover table-responsive-lg">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -133,3 +133,18 @@
         </div>
     </div>
 <?php } ?>
+<script>
+    $(function() {
+        <?php foreach ($pasien as $key => $value) { ?>
+            $('#table-riwayat<?= $value->id ?>').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        <?php } ?>
+    });
+</script>
