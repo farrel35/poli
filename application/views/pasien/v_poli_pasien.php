@@ -78,13 +78,22 @@
             .then(data => {
                 const jadwalSelect = document.getElementById('inputJadwal');
                 jadwalSelect.innerHTML = '';
-                data.forEach(jadwal => {
+                if (data.length === 0) {
+                    // Tambahkan opsi default jika data kosong
                     const option = document.createElement('option');
-                    option.value = jadwal.id;
-                    option.textContent =
-                        `${jadwal.nama} | ${jadwal.hari} | ${jadwal.jam_mulai} - ${jadwal.jam_selesai}`;
+                    option.value = '';
+                    option.textContent = 'Tidak ada jadwal tersedia';
                     jadwalSelect.appendChild(option);
-                });
+                } else {
+                    // Tambahkan opsi berdasarkan data
+                    data.forEach(jadwal => {
+                        const option = document.createElement('option');
+                        option.value = jadwal.id;
+                        option.textContent =
+                            `${jadwal.nama} | ${jadwal.hari} | ${jadwal.jam_mulai} - ${jadwal.jam_selesai}`;
+                        jadwalSelect.appendChild(option);
+                    });
+                }
             })
             .catch(error => console.error('Error fetching jadwal:', error));
     });
