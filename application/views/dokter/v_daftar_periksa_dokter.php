@@ -113,8 +113,17 @@
 
                         <!-- Biaya Periksa -->
                         <div class="form-group">
-                            <label for="biaya_periksa">Total Biaya Pemeriksaan</label>
-                            <input type="text" id="biaya_periksa<?= $value->id ?>" name="biaya_periksa" class="form-control"
+                            <label for="biaya_periksa">Biaya Periksa</label>
+                            <input type="text" class="form-control" value="150000" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="biaya_obat">Biaya Obat</label>
+                            <input type="text" id="biaya_obat<?= $value->id ?>" class="form-control"
+                                value="Rp 0" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="biaya_pemeriksaan">Total Biaya Pemeriksaan</label>
+                            <input type="text" id="biaya_pemeriksaan<?= $value->id ?>" name="biaya_pemeriksaan" class="form-control"
                                 value="Rp 0" readonly>
                         </div>
                     </div>
@@ -183,9 +192,18 @@
 
                         <!-- Biaya Periksa -->
                         <div class="form-group">
-                            <label for="biaya_periksa">Total Biaya Pemeriksaan</label>
-                            <input type="text" id="biaya_periksa2<?= $value->id ?>" name="biaya_periksa" class="form-control"
-                                value="<?= set_value('biaya_periksa2', $value->biaya_periksa); ?>" readonly>
+                            <label for="biaya_periksa">Biaya Periksa</label>
+                            <input type="text" class="form-control" value="150000" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="biaya_obat">Biaya Obat</label>
+                            <input type="text" id="biaya_obat2<?= $value->id ?>" class="form-control"
+                                value="<?= set_value('biaya_pemeriksaan2', $value->biaya_periksa - 150000); ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="biaya_pemeriksaan">Total Biaya Pemeriksaan</label>
+                            <input type="text" id="biaya_pemeriksaan<?= $value->id ?>" name="biaya_pemeriksaan" class="form-control"
+                                value="<?= set_value('biaya_pemeriksaan2', $value->biaya_periksa); ?>" readonly>
                         </div>
                     </div>
 
@@ -221,7 +239,8 @@
             });
 
             // Tampilkan total biaya di input yang sesuai
-            $('#biaya_periksa' + modalId).val(total);
+            $('#biaya_obat' + modalId).val(total);
+            $('#biaya_pemeriksaan' + modalId).val(total + 150000);
         });
         $('.obat-select2').select2();
 
@@ -238,7 +257,8 @@
             });
 
             // Tampilkan total biaya di input yang sesuai
-            $('#biaya_periksa2' + modalId).val(total);
+            $('#biaya_obat2' + modalId).val(total);
+            $('#biaya_pemeriksaan' + modalId).val(total + 150000);
         });
     });
 </script>

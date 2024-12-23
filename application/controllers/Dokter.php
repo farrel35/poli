@@ -141,6 +141,8 @@ class Dokter extends CI_Controller
 			$jam_selesai = $this->input->post('jam_selesai');
 
 			$this->db->where('hari', $hari);
+			$this->db->where('id_dokter', $id_dokter);
+
 			$existing_hari = $this->db->get('tbl_jadwal_periksa')->row();
 
 			if ($existing_hari) {
@@ -214,7 +216,7 @@ class Dokter extends CI_Controller
 				'id_daftar_poli' => $id,
 				'tgl_periksa' => $this->input->post('tgl_periksa'),
 				'catatan' => $this->input->post('catatan'),
-				'biaya_periksa' => $this->input->post('biaya_periksa')
+				'biaya_periksa' => $this->input->post('biaya_pemeriksaan')
 			);
 
 			$obat_ids = $this->input->post('obat');
@@ -257,7 +259,7 @@ class Dokter extends CI_Controller
 				'id' => $id,
 				'tgl_periksa' => $this->input->post('tgl_periksa'),
 				'catatan' => $this->input->post('catatan'),
-				'biaya_periksa' => $this->input->post('biaya_periksa')
+				'biaya_periksa' => $this->input->post('biaya_pemeriksaan')
 			);
 
 			$obat_ids = $this->input->post('obat2');
