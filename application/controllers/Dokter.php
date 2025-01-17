@@ -166,15 +166,38 @@ class Dokter extends CI_Controller
 	public function edit_jadwal_periksa($id = NULL)
 	{
 		$id_dokter = $this->session->userdata('id_dokter');
-
-		$data = array(
-			'id' => $id,
-			'id_dokter' => $id_dokter,
-			'isActive' => $this->input->post('isActive')
+		// Map English day names to Indonesian
+		$day_names = array(
+			'Sunday' => 'Minggu',
+			'Monday' => 'Senin',
+			'Tuesday' => 'Selasa',
+			'Wednesday' => 'Rabu',
+			'Thursday' => 'Kamis',
+			'Friday' => 'Jumat',
+			'Saturday' => 'Sabtu'
 		);
-		$this->M_dokter->edit_jadwal_periksa($data);
-		$this->session->set_flashdata('success', 'Jadwal berhasil diedit');
-		redirect('dokter/jadwal_periksa');
+
+		$current_day_name = date('l');
+		$day_name_indonesia = $day_names[$current_day_name];
+
+		$this->db->where('hari', $day_name_indonesia);
+		$this->db->where('isActive', 1);
+		$this->db->where('id_dokter', $id_dokter);
+
+		$existing_hari = $this->db->get('tbl_jadwal_periksa')->row();
+		if ($existing_hari) {
+			$this->session->set_flashdata('error', 'Tidak bisa mengubah jadwal, dikarenakan hari ini sudah ada jadwal aktif.');
+			redirect('dokter/jadwal_periksa');
+		} else {
+			$data = array(
+				'id' => $id,
+				'id_dokter' => $id_dokter,
+				'isActive' => $this->input->post('isActive'),
+			);
+			$this->M_dokter->edit_jadwal_periksa($data);
+			$this->session->set_flashdata('success', 'Jadwal berhasil diedit');
+			redirect('dokter/jadwal_periksa');
+		}
 	}
 
 	public function delete_jadwal_periksa($id = NULL)
